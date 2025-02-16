@@ -658,9 +658,6 @@ video {
 .top-2 {
   top: 0.5rem;
 }
-.top-24 {
-  top: 6rem;
-}
 .top-3\.5 {
   top: 0.875rem;
 }
@@ -699,6 +696,15 @@ video {
 }
 .z-\[1\] {
   z-index: 1;
+}
+.z-\[20\] {
+  z-index: 20;
+}
+.z-\[\=20\] {
+  z-index: =20;
+}
+.z-\[-20\] {
+  z-index: -20;
 }
 .col-span-1 {
   grid-column: span 1 / span 1;
@@ -815,9 +821,6 @@ video {
 .mt-auto {
   margin-top: auto;
 }
-.mr-auto {
-  margin-right: auto;
-}
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -930,6 +933,9 @@ video {
 .h-8 {
   height: 2rem;
 }
+.h-80 {
+  height: 20rem;
+}
 .h-9 {
   height: 2.25rem;
 }
@@ -983,9 +989,6 @@ video {
 }
 .h-svh {
   height: 100svh;
-}
-.h-\[50px\] {
-  height: 50px;
 }
 .max-h-40 {
   max-height: 10rem;
@@ -1107,6 +1110,9 @@ video {
 .w-8 {
   width: 2rem;
 }
+.w-80 {
+  width: 20rem;
+}
 .w-9 {
   width: 2.25rem;
 }
@@ -1125,11 +1131,11 @@ video {
 .w-\[200px\] {
   width: 200px;
 }
+.w-\[40px\] {
+  width: 40px;
+}
 .w-\[450px\] {
   width: 450px;
-}
-.w-\[56px\] {
-  width: 56px;
 }
 .w-\[70px\] {
   width: 70px;
@@ -1148,9 +1154,6 @@ video {
 }
 .w-px {
   width: 1px;
-}
-.w-\[40px\] {
-  width: 40px;
 }
 .min-w-0 {
   min-width: 0px;
@@ -1992,6 +1995,11 @@ video {
   --tw-gradient-to: rgb(77 176 95 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
+.from-\[\#79e08c\] {
+  --tw-gradient-from: #79e08c var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(121 224 140 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 .from-background {
   --tw-gradient-from: hsl(var(--background)) var(--tw-gradient-from-position);
   --tw-gradient-to: hsl(var(--background) / 0) var(--tw-gradient-to-position);
@@ -2006,6 +2014,9 @@ video {
 }
 .to-\[\#4DB05F\] {
   --tw-gradient-to: #4DB05F var(--tw-gradient-to-position);
+}
+.to-\[\#4d96ca\] {
+  --tw-gradient-to: #4d96ca var(--tw-gradient-to-position);
 }
 .to-muted {
   --tw-gradient-to: hsl(var(--muted)) var(--tw-gradient-to-position);
@@ -3050,10 +3061,6 @@ html {
   color: hsl(var(--muted-foreground));
 }
 
-.hover\:text-primary:hover {
-  color: hsl(var(--primary));
-}
-
 .hover\:text-primary-foreground:hover {
   color: hsl(var(--primary-foreground));
 }
@@ -3583,10 +3590,6 @@ html {
 
 .data-\[state\=open\]\:text-accent-foreground[data-state="open"] {
   color: hsl(var(--accent-foreground));
-}
-
-.data-\[state\=open\]\:text-muted-foreground[data-state="open"] {
-  color: hsl(var(--muted-foreground));
 }
 
 .data-\[disabled\=true\]\:opacity-50[data-disabled="true"] {

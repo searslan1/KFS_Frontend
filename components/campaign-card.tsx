@@ -53,7 +53,7 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
             src={campaign.imageUrl || `/placeholder.svg?text=${campaign.campaign_name}`}
             alt={campaign.campaign_name}
             fill
-            className="object-cover w-full h-64"
+            className="object-cover w-full h-64 z-1"
           />
         </div>
 
@@ -90,7 +90,7 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
                   animation: "shimmer 3s linear infinite",
                 }}
               >
-                <span className="text-white text-xs font-bold truncate relative z-10">
+                <span className="text-white text-xs font-bold truncate relative z-1">
                   ₺ {campaign.currentAmount.toLocaleString()}
                 </span>
               </div>

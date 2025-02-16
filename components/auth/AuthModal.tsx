@@ -36,24 +36,24 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     dispatch(setLoading(true));
     try {
       if (isLogin) {
-        // Simulate API call for login
+        // Simule edilmiş login API çağrısı
         await new Promise((resolve) => setTimeout(resolve, 1000));
         dispatch(setUser({ id: "1", name: "Test Kullanıcı", email }));
-        // Set login cookie
+        // Giriş çerezi ayarla
         document.cookie = "isLoggedIn=true; path=/; max-age=3600";
         onClose();
         router.push("/profile");
       } else {
-        // Simulate API call for register
+        // Simule edilmiş kayıt API çağrısı
         await new Promise((resolve) => setTimeout(resolve, 1000));
         dispatch(setUser({ id: "1", name: "Test Kullanıcı", email }));
-        // Set login cookie
+        // Giriş çerezi ayarla
         document.cookie = "isLoggedIn=true; path=/; max-age=3600";
         onClose();
         router.push("/profile");
       }
     } catch (error) {
-      dispatch(setError(isLogin ? "Login failed" : "Registration failed"));
+      dispatch(setError(isLogin ? "Giriş başarısız" : "Kayıt başarısız"));
     } finally {
       dispatch(setLoading(false));
     }
@@ -70,8 +70,17 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[800px] p-0 overflow-hidden bg-white">
         <div className="flex h-[600px] relative">
+          {/* X Kapatma Butonu */}
+          <button
+            type="button"
+            onClick={onClose}
+            className="absolute top-4 right-4 z-50 text-white/70 hover:text-white text-xl font-bold p-2"
+          >
+            ✕
+          </button>
+          
           <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-[#4DB05F] to-[#3B6C8F]"
+            className="absolute inset-0 bg-gradient-to-br from-[#79e08c] to-[#4d96ca]"
             initial={false}
             animate={{
               clipPath: isLogin
@@ -84,6 +93,8 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               damping: 20,
             }}
           />
+          
+          {/* Sol Panel */}
           <div className="w-1/2 p-8 flex flex-col justify-center items-center relative z-10">
             <AnimatePresence mode="wait">
               {isLogin ? (
@@ -102,10 +113,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     Hesabınız yok mu? Hemen kaydolun ve fırsatları kaçırmayın!
                   </p>
                   <div className="flex justify-center">
-                    <CustomButton
-                      onClick={toggleAuthMode}
-                      text="Kayıt Ol"
-                    />
+                    <CustomButton onClick={toggleAuthMode} text="Kayıt Ol" />
                   </div>
                 </motion.div>
               ) : (
@@ -117,23 +125,21 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                   transition={{ duration: 0.3 }}
                   className="text-center"
                 >
-                  <h2 className="text-3xl font-bold mb-4 text-[#4DB05F]">
+                  <h2 className="text-3xl font-bold mb-4 text-white">
                     Merhaba!
                   </h2>
-                  <p className="mb-6 text-gray-600">
+                  <p className="mb-6 text-white">
                     Zaten hesabınız var mı? Hemen giriş yapın!
                   </p>
-                  <Button
-                    onClick={toggleAuthMode}
-                    className="bg-[#4DB05F] text-white hover:bg-[#4DB05F]/90 transition-colors"
-                  >
-                    Giriş Yap <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <div className="flex justify-center">
+                    <CustomButton onClick={toggleAuthMode} text="Giriş Yap" />
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
+          {/* Sağ Panel */}
           <div className="w-1/2 p-8 flex flex-col justify-center items-center relative z-10">
             <AnimatePresence mode="wait">
               {isLogin ? (
@@ -189,16 +195,16 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                   </form>
                   <div className="mt-4 flex justify-center space-x-4">
                     <SocialButton
-                      icon={<LinkedinIcon className="w-6 h-6 text-white" />}
-                      onClick={() => console.log("LinkedIn login")}
+                      icon={<LinkedinIcon className="w-6 h-6 text-[#4DB05F]" />}
+                      onClick={() => console.log("LinkedIn ile giriş")}
                     />
                     <SocialButton
-                      icon={<GoogleIcon className="w-6 h-6 text-white" />}
-                      onClick={() => console.log("Google login")}
+                      icon={<GoogleIcon className="w-6 h-6 text-[#4DB05F]" />}
+                      onClick={() => console.log("Google ile giriş")}
                     />
                     <SocialButton
-                      icon={<AppleIcon className="w-6 h-6 text-white" />}
-                      onClick={() => console.log("Apple login")}
+                      icon={<AppleIcon className="w-6 h-6 text-[#4DB05F]" />}
+                      onClick={() => console.log("Apple ile giriş")}
                     />
                   </div>
                 </motion.div>
@@ -279,16 +285,16 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                   </form>
                   <div className="mt-4 flex justify-center space-x-4">
                     <SocialButton
-                      icon={<LinkedinIcon className="w-6 h-6 text-white" />}
-                      onClick={() => console.log("LinkedIn register")}
+                      icon={<LinkedinIcon className="w-6 h-6 text-[#4DB05F]" />}
+                      onClick={() => console.log("LinkedIn ile kayıt")}
                     />
                     <SocialButton
-                      icon={<GoogleIcon className="w-6 h-6 text-white" />}
-                      onClick={() => console.log("Google register")}
+                      icon={<GoogleIcon className="w-6 h-6 text-[#4DB05F]" />}
+                      onClick={() => console.log("Google ile kayıt")}
                     />
                     <SocialButton
-                      icon={<AppleIcon className="w-6 h-6 text-white" />}
-                      onClick={() => console.log("Apple register")}
+                      icon={<AppleIcon className="w-6 h-6 text-[#4DB05F]" />}
+                      onClick={() => console.log("Apple ile kayıt")}
                     />
                   </div>
                 </motion.div>

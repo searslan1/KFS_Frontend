@@ -11,6 +11,22 @@
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+    ],
+    "/campaigns/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/campaigns/page.css",
+      "static/chunks/app/campaigns/page.js"
+    ],
+    "/investor/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/investor/page.js"
+    ],
+    "/entrepreneur/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/entrepreneur/page.js"
     ]
   }
 }
