@@ -101,10 +101,9 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                   <p className="mb-6 text-white">
                     Hesabınız yok mu? Hemen kaydolun ve fırsatları kaçırmayın!
                   </p>
-                  <div>
+                  <div className="flex justify-center">
                     <CustomButton
                       onClick={toggleAuthMode}
-                      className="justify-center ml-auto mr-auto"
                       text="Kayıt Ol"
                     />
                   </div>
