@@ -1,10 +1,10 @@
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { upcomingCampaigns } from "@/lib/mockData"
-import { useLanguage } from "@/contexts/language-context"
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { upcomingCampaigns } from "@/lib/mockData";
+import { useLanguage } from "@/contexts/language-context";
 
 export function UpcomingCampaigns() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-[#f2f6fa]">
@@ -15,7 +15,10 @@ export function UpcomingCampaigns() {
         <div className="w-12 h-1 bg-[#4DB05F] rounded-full mx-auto mb-8" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {upcomingCampaigns.map((campaign) => (
-            <div key={campaign.id} className="bg-white rounded-3xl shadow-lg overflow-hidden">
+            <div
+              key={campaign.id}
+              className="bg-white rounded-3xl shadow-lg overflow-hidden"
+            >
               <div className="bg-[#3F84B6] p-6 rounded-3xl aspect-square relative overflow-hidden">
                 <Image
                   src={campaign.imageUrl || "/placeholder.svg"}
@@ -35,18 +38,22 @@ export function UpcomingCampaigns() {
                   />
                   <span className="font-semibold">{campaign.title}</span>
                 </div>
-                <Button className="w-full bg-black hover:bg-gray-600 text-white">{t("comingSoon")}</Button>
+                <Button className="w-full bg-black hover:bg-gray-600 text-white">
+                  {t("comingSoon")}
+                </Button>
               </div>
             </div>
           ))}
         </div>
         <div className="flex justify-center mt-8">
-          <Button variant="outline" className="bg-[#4DB05F] text-white hover:bg-[#366a40] hover:text-white">
+          <Button
+            variant="outline"
+            className="bg-[#4DB05F] text-white hover:bg-kfs hover:text-white"
+          >
             {t("viewMore")}
           </Button>
         </div>
       </div>
     </section>
-  )
+  );
 }
-

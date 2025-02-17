@@ -6,7 +6,8 @@ export const mockProfileData: UserProfile = {
   website: "website",
   email: "hello@spacencv.io",
   phone: "512-555-0189",
-  photoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/resim-i0cpfqcVUm30lWeWZkzAVJKCcXrlJh.png",
+  photoUrl:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/resim-i0cpfqcVUm30lWeWZkzAVJKCcXrlJh.png",
   languages: ["es", "en", "de"],
   socialLinks: {
     linkedin: "#",
@@ -30,7 +31,7 @@ export const mockProfileData: UserProfile = {
     {
       title: "TOP 1%",
       score: 105,
-      type: "primary",
+      type: "kfs",
     },
     {
       title: "TOP 10%",
@@ -69,5 +70,4 @@ export const mockProfileData: UserProfile = {
       type: "Part Time",
     },
   ],
-}
-
+};

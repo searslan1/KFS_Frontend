@@ -697,15 +697,6 @@ video {
 .z-\[1\] {
   z-index: 1;
 }
-.z-\[20\] {
-  z-index: 20;
-}
-.z-\[\=20\] {
-  z-index: =20;
-}
-.z-\[-20\] {
-  z-index: -20;
-}
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
@@ -1673,8 +1664,8 @@ video {
 .border-input {
   border-color: hsl(var(--input));
 }
-.border-primary {
-  border-color: hsl(var(--primary));
+.border-kfs {
+  border-color: hsl(var(--kfs));
 }
 .border-sidebar-border {
   border-color: hsl(var(--sidebar-border));
@@ -1869,6 +1860,12 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(224 231 255 / var(--tw-bg-opacity, 1));
 }
+.bg-kfs {
+  background-color: hsl(var(--kfs));
+}
+.bg-kfs\/10 {
+  background-color: hsl(var(--kfs) / 0.1);
+}
 .bg-lime-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(132 204 22 / var(--tw-bg-opacity, 1));
@@ -1897,12 +1894,6 @@ video {
 }
 .bg-popover {
   background-color: hsl(var(--popover));
-}
-.bg-primary {
-  background-color: hsl(var(--primary));
-}
-.bg-primary\/10 {
-  background-color: hsl(var(--primary) / 0.1);
 }
 .bg-purple-100 {
   --tw-bg-opacity: 1;
@@ -2175,6 +2166,9 @@ video {
 .pl-8 {
   padding-left: 2rem;
 }
+.pl-9 {
+  padding-left: 2.25rem;
+}
 .pr-10 {
   padding-right: 2.5rem;
 }
@@ -2425,6 +2419,12 @@ video {
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity, 1));
 }
+.text-kfs {
+  color: hsl(var(--kfs));
+}
+.text-kfs-foreground {
+  color: hsl(var(--kfs-foreground));
+}
 .text-muted-foreground {
   color: hsl(var(--muted-foreground));
 }
@@ -2438,12 +2438,6 @@ video {
 }
 .text-popover-foreground {
   color: hsl(var(--popover-foreground));
-}
-.text-primary {
-  color: hsl(var(--primary));
-}
-.text-primary-foreground {
-  color: hsl(var(--primary-foreground));
 }
 .text-purple-600 {
   --tw-text-opacity: 1;
@@ -2748,8 +2742,8 @@ video {
   --card-foreground: 222.2 84% 4.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 222.2 84% 4.9%;
-  --primary: 221 83% 53%;
-  --primary-foreground: 210 40% 98%;
+  --kfs: 221 83% 53%;
+  --kfs-foreground: 210 40% 98%;
   --secondary: 210 40% 96.1%;
   --secondary-foreground: 222.2 47.4% 11.2%;
   --muted: 210 40% 96.1%;
@@ -2771,8 +2765,8 @@ video {
   --card-foreground: 210 40% 98%;
   --popover: 222.2 84% 4.9%;
   --popover-foreground: 210 40% 98%;
-  --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 222.2 47.4% 11.2%;
+  --kfs: 217.2 91.2% 59.8%;
+  --kfs-foreground: 222.2 47.4% 11.2%;
   --secondary: 217.2 32.6% 17.5%;
   --secondary-foreground: 210 40% 98%;
   --muted: 217.2 32.6% 17.5%;
@@ -2929,11 +2923,6 @@ html {
   border-color: rgb(77 176 95 / 0.5);
 }
 
-.hover\:bg-\[\#366a40\]:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(54 106 64 / var(--tw-bg-opacity, 1));
-}
-
 .hover\:bg-\[\#4DB05F\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(77 176 95 / var(--tw-bg-opacity, 1));
@@ -2988,20 +2977,20 @@ html {
   background-color: rgb(75 85 99 / var(--tw-bg-opacity, 1));
 }
 
+.hover\:bg-kfs:hover {
+  background-color: hsl(var(--kfs));
+}
+
+.hover\:bg-kfs\/80:hover {
+  background-color: hsl(var(--kfs) / 0.8);
+}
+
 .hover\:bg-muted:hover {
   background-color: hsl(var(--muted));
 }
 
 .hover\:bg-muted\/50:hover {
   background-color: hsl(var(--muted) / 0.5);
-}
-
-.hover\:bg-primary:hover {
-  background-color: hsl(var(--primary));
-}
-
-.hover\:bg-primary\/80:hover {
-  background-color: hsl(var(--primary) / 0.8);
 }
 
 .hover\:bg-red-50:hover {
@@ -3057,12 +3046,12 @@ html {
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
 
-.hover\:text-muted-foreground:hover {
-  color: hsl(var(--muted-foreground));
+.hover\:text-kfs-foreground:hover {
+  color: hsl(var(--kfs-foreground));
 }
 
-.hover\:text-primary-foreground:hover {
-  color: hsl(var(--primary-foreground));
+.hover\:text-muted-foreground:hover {
+  color: hsl(var(--muted-foreground));
 }
 
 .hover\:text-red-600:hover {
@@ -3135,16 +3124,16 @@ html {
   background-color: hsl(var(--accent));
 }
 
-.focus\:bg-primary:focus {
-  background-color: hsl(var(--primary));
+.focus\:bg-kfs:focus {
+  background-color: hsl(var(--kfs));
 }
 
 .focus\:text-accent-foreground:focus {
   color: hsl(var(--accent-foreground));
 }
 
-.focus\:text-primary-foreground:focus {
-  color: hsl(var(--primary-foreground));
+.focus\:text-kfs-foreground:focus {
+  color: hsl(var(--kfs-foreground));
 }
 
 .focus\:opacity-100:focus {
@@ -3298,12 +3287,12 @@ html {
   border-color: hsl(var(--border));
 }
 
-.group.toast .group-\[\.toast\]\:bg-muted {
-  background-color: hsl(var(--muted));
+.group.toast .group-\[\.toast\]\:bg-kfs {
+  background-color: hsl(var(--kfs));
 }
 
-.group.toast .group-\[\.toast\]\:bg-primary {
-  background-color: hsl(var(--primary));
+.group.toast .group-\[\.toast\]\:bg-muted {
+  background-color: hsl(var(--muted));
 }
 
 .group.toaster .group-\[\.toaster\]\:bg-background {
@@ -3315,12 +3304,12 @@ html {
   color: rgb(252 165 165 / var(--tw-text-opacity, 1));
 }
 
-.group.toast .group-\[\.toast\]\:text-muted-foreground {
-  color: hsl(var(--muted-foreground));
+.group.toast .group-\[\.toast\]\:text-kfs-foreground {
+  color: hsl(var(--kfs-foreground));
 }
 
-.group.toast .group-\[\.toast\]\:text-primary-foreground {
-  color: hsl(var(--primary-foreground));
+.group.toast .group-\[\.toast\]\:text-muted-foreground {
+  color: hsl(var(--muted-foreground));
 }
 
 .group.toaster .group-\[\.toaster\]\:text-foreground {
@@ -3531,8 +3520,8 @@ html {
   background-color: hsl(var(--background));
 }
 
-.data-\[state\=checked\]\:bg-primary[data-state="checked"] {
-  background-color: hsl(var(--primary));
+.data-\[state\=checked\]\:bg-kfs[data-state="checked"] {
+  background-color: hsl(var(--kfs));
 }
 
 .data-\[state\=on\]\:bg-accent[data-state="on"] {
@@ -3580,8 +3569,8 @@ html {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.data-\[state\=checked\]\:text-primary-foreground[data-state="checked"] {
-  color: hsl(var(--primary-foreground));
+.data-\[state\=checked\]\:text-kfs-foreground[data-state="checked"] {
+  color: hsl(var(--kfs-foreground));
 }
 
 .data-\[state\=on\]\:text-accent-foreground[data-state="on"] {
@@ -4753,7 +4742,6 @@ html {
 [data-side=right] .\[\[data-side\=right\]_\&\]\:cursor-e-resize {
   cursor: e-resize;
 }
-
 
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[14].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"app\\layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!

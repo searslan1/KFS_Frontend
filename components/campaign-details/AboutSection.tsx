@@ -1,14 +1,17 @@
-import type React from "react"
-import { Button } from "@/components/ui/button"
-import { formatCurrency, formatDate } from "@/shared/utils/formatters"
-import type { Campaign } from "@/lib/mockData"
+import type React from "react";
+import { Button } from "@/components/ui/button";
+import { formatCurrency, formatDate } from "@/shared/utils/formatters";
+import type { Campaign } from "@/lib/mockData";
 
 interface AboutSectionProps {
-  campaign: Campaign
-  progress: number
+  campaign: Campaign;
+  progress: number;
 }
 
-export const AboutSection: React.FC<AboutSectionProps> = ({ campaign, progress }) => {
+export const AboutSection: React.FC<AboutSectionProps> = ({
+  campaign,
+  progress,
+}) => {
   return (
     <div className="grid md:grid-cols-2 gap-8">
       {/* Left Column */}
@@ -18,11 +21,15 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ campaign, progress }
           <div className="space-y-4">
             <div>
               <p className="text-sm text-gray-500">Hedeflenen Fonlama</p>
-              <p className="text-lg font-bold">{formatCurrency(campaign.goalAmount)}</p>
+              <p className="text-lg font-bold">
+                {formatCurrency(campaign.goalAmount)}
+              </p>
             </div>
             <div>
               <p className="text-sm text-gray-500">Alınan Yatırım</p>
-              <p className="text-lg font-bold">{formatCurrency(campaign.currentAmount)}</p>
+              <p className="text-lg font-bold">
+                {formatCurrency(campaign.currentAmount)}
+              </p>
             </div>
             <div className="relative pt-1">
               <div className="flex mb-2 items-center justify-between">
@@ -41,7 +48,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ campaign, progress }
             </div>
             <div>
               <p className="text-sm text-gray-500">Kampanya Bitiş Süresi</p>
-              <p className="text-lg font-bold">{formatDate(campaign.endDate)}</p>
+              <p className="text-lg font-bold">
+                {formatDate(campaign.endDate)}
+              </p>
             </div>
             <div>
               <p className="text-sm text-gray-500">Kategori</p>
@@ -53,22 +62,30 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ campaign, progress }
             </div>
           </div>
         </div>
-        <Button className="w-full bg-[#4DB05F] hover:bg-[#366a40] text-white">Yatırım Yap</Button>
+        <Button className="w-full bg-[#4DB05F] hover:bg-kfs text-white">
+          Yatırım Yap
+        </Button>
       </div>
 
       {/* Right Column */}
       <div className="space-y-6">
         <div>
           <h3 className="text-xl font-semibold mb-4">Proje Hakkında</h3>
-          <p className="text-gray-600 leading-relaxed">{campaign.about_project}</p>
+          <p className="text-gray-600 leading-relaxed">
+            {campaign.about_project}
+          </p>
         </div>
         <div>
           <h3 className="text-xl font-semibold mb-4">Proje Özeti</h3>
-          <p className="text-gray-600 leading-relaxed">{campaign.campaign_summary}</p>
+          <p className="text-gray-600 leading-relaxed">
+            {campaign.campaign_summary}
+          </p>
         </div>
         <div>
           <h3 className="text-xl font-semibold mb-4">Hedef Kapsam</h3>
-          <p className="text-gray-600 leading-relaxed">{campaign.goal_coverage_subject}</p>
+          <p className="text-gray-600 leading-relaxed">
+            {campaign.goal_coverage_subject}
+          </p>
         </div>
         <div>
           <h3 className="text-xl font-semibold mb-4">Girişimci</h3>
@@ -87,6 +104,5 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ campaign, progress }
         </div>
       </div>
     </div>
-  )
-}
-
+  );
+};
