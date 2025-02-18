@@ -1,10 +1,16 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Label } from "@/components/ui/label"
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
 export function InvestorForm() {
   const [formData, setFormData] = useState({
@@ -17,14 +23,14 @@ export function InvestorForm() {
     birthDate: "",
     mkkNo: "",
     annualIncome: "",
-  })
+  });
 
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
-    }))
-  }
+    }));
+  };
 
   return (
     <form className="space-y-6">
@@ -32,7 +38,11 @@ export function InvestorForm() {
         {/* Personal Information */}
         <div className="space-y-2">
           <Label>Adınız *</Label>
-          <Input value={formData.name} onChange={(e) => handleChange("name", e.target.value)} className="rounded-lg" />
+          <Input
+            value={formData.name}
+            onChange={(e) => handleChange("name", e.target.value)}
+            className="rounded-lg"
+          />
         </div>
         <div className="space-y-2">
           <Label>Soyadınız *</Label>
@@ -54,7 +64,10 @@ export function InvestorForm() {
         <div className="grid grid-cols-3 gap-2">
           <div className="space-y-2">
             <Label>Kod *</Label>
-            <Select value={formData.countryCode} onValueChange={(value) => handleChange("countryCode", value)}>
+            <Select
+              value={formData.countryCode}
+              onValueChange={(value) => handleChange("countryCode", value)}
+            >
               <SelectTrigger className="rounded-lg">
                 <SelectValue placeholder="Kod" />
               </SelectTrigger>
@@ -111,11 +124,13 @@ export function InvestorForm() {
       </div>
 
       <div className="flex justify-end">
-        <Button type="submit" className="bg-[#4DB05F] hover:bg-[#4DB05F]/90 text-white px-8 rounded-full">
+        <Button
+          type="submit"
+          className="bg-kfs hover:bg-kfshover/90 text-white px-8 rounded-full"
+        >
           Kaydet
         </Button>
       </div>
     </form>
-  )
+  );
 }
-

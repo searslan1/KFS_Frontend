@@ -50,7 +50,7 @@ export function StatsSection() {
         <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-center mb-2 bg-gradient-to-r from-[#4DB05F] to-[#3B6C8F] bg-clip-text text-transparent">
           RAKAMLARLA ARDVENTURE
         </h2>
-        <div className="w-12 h-1 bg-[#4DB05F] rounded-full mx-auto mb-12" />
+        <div className="w-12 h-1 bg-kfs rounded-full mx-auto mb-12" />
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <motion.div

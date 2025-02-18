@@ -62,7 +62,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
             </div>
           </div>
         </div>
-        <Button className="w-full bg-[#4DB05F] hover:bg-kfs text-white">
+        <Button className="w-full bg-kfs hover:bg-kfshover text-white">
           Yatırım Yap
         </Button>
       </div>

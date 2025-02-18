@@ -74,21 +74,21 @@ export default function EntrepreneurPage() {
                       <div className="grid grid-cols-2 gap-6">
                         <div className="bg-gray-50 p-3 rounded-lg">
                           <span className="text-sm text-gray-500 block mb-1">Toplam Yatırım</span>
-                          <span className="text-lg font-semibold text-[#4DB05F]">
+                          <span className="text-lg font-semibold text-kfs">
                             {campaign.totalInvestment || "0"} ₺
                           </span>
                         </div>
                         <div className="bg-gray-50 p-3 rounded-lg">
                           <span className="text-sm text-gray-500 block mb-1">Yatırımcı Sayısı</span>
-                          <span className="text-lg font-semibold text-[#4DB05F]">{campaign.investorCount || "0"}</span>
+                          <span className="text-lg font-semibold text-kfs">{campaign.investorCount || "0"}</span>
                         </div>
                         <div className="bg-gray-50 p-3 rounded-lg">
                           <span className="text-sm text-gray-500 block mb-1">Hedef</span>
-                          <span className="text-lg font-semibold text-[#4DB05F]">{campaign.targetAmount || "0"} ₺</span>
+                          <span className="text-lg font-semibold text-kfs">{campaign.targetAmount || "0"} ₺</span>
                         </div>
                         <div className="bg-gray-50 p-3 rounded-lg">
                           <span className="text-sm text-gray-500 block mb-1">Kalan Süre</span>
-                          <span className="text-lg font-semibold text-[#4DB05F]">
+                          <span className="text-lg font-semibold text-kfs">
                             {campaign.remainingDays || "0"} gün
                           </span>
                         </div>
@@ -111,7 +111,7 @@ export default function EntrepreneurPage() {
               canCreateCampaign ? "cursor-pointer" : "opacity-50 cursor-not-allowed"
             }`}
           >
-            <div className="w-[72px] h-[72px] rounded-full bg-[#4DB05F] flex items-center justify-center">
+            <div className="w-[72px] h-[72px] rounded-full bg-kfs flex items-center justify-center">
               <Plus className="w-10 h-10 text-black" strokeWidth={3} />
             </div>
             <span className="text-xl font-medium text-black">Kampanya Oluştur</span>

@@ -1,11 +1,15 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
-import { Progress } from "@/components/ui/progress"
-import type { Campaign } from "@/lib/mockData"
-import { formatCurrency, calculateProgress, formatDate } from "@/shared/utils/formatters"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Progress } from "@/components/ui/progress";
+import type { Campaign } from "@/lib/mockData";
+import {
+  formatCurrency,
+  calculateProgress,
+  formatDate,
+} from "@/shared/utils/formatters";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   CreditCard,
   FileText,
@@ -23,15 +27,20 @@ import {
   Wallet,
   ArrowLeft,
   ArrowRight,
-} from "lucide-react"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+} from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface CampaignDetailsProps {
-  campaign: Campaign
-  open: boolean
-  onOpenChange: (open: boolean) => void
+  campaign: Campaign;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
 const tabs = [
@@ -49,15 +58,22 @@ const tabs = [
   { id: "faq", label: "Soru ve Cevaplar", icon: HelpCircle },
   { id: "form", label: "Kampanya Bilgi Formu", icon: FileSpreadsheet },
   { id: "payment", label: "Pay Satış Ekranı", icon: Wallet },
-]
+];
 
-export function CampaignDetails({ campaign, open, onOpenChange }: CampaignDetailsProps) {
-  const [activeTab, setActiveTab] = useState("about")
-  const progress = calculateProgress(campaign.currentAmount, campaign.goalAmount)
+export function CampaignDetails({
+  campaign,
+  open,
+  onOpenChange,
+}: CampaignDetailsProps) {
+  const [activeTab, setActiveTab] = useState("about");
+  const progress = calculateProgress(
+    campaign.currentAmount,
+    campaign.goalAmount
+  );
 
-  const currentTabIndex = tabs.findIndex((tab) => tab.id === activeTab)
-  const prevTab = tabs[currentTabIndex - 1]
-  const nextTab = tabs[currentTabIndex + 1]
+  const currentTabIndex = tabs.findIndex((tab) => tab.id === activeTab);
+  const prevTab = tabs[currentTabIndex - 1];
+  const nextTab = tabs[currentTabIndex + 1];
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -67,10 +83,13 @@ export function CampaignDetails({ campaign, open, onOpenChange }: CampaignDetail
           <div className="p-4 sm:p-6 border-b">
             <div className="max-w-7xl mx-auto">
               <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">{campaign.campaign_name}</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
+                  {campaign.campaign_name}
+                </h1>
                 <div className="flex items-center gap-3 w-full sm:w-auto">
                   <div className="text-sm text-gray-500 whitespace-nowrap">
-                    {formatCurrency(campaign.currentAmount)} / {formatCurrency(campaign.goalAmount)}
+                    {formatCurrency(campaign.currentAmount)} /{" "}
+                    {formatCurrency(campaign.goalAmount)}
                   </div>
                   <Progress value={progress} className="w-full sm:w-48 h-2" />
                 </div>
@@ -79,12 +98,22 @@ export function CampaignDetails({ campaign, open, onOpenChange }: CampaignDetail
               {/* Navigation Grid */}
               <div className="grid grid-cols-7 gap-2 sm:gap-3">
                 {tabs.slice(0, 7).map((tab) => (
-                  <TabButton key={tab.id} tab={tab} activeTab={activeTab} setActiveTab={setActiveTab} />
+                  <TabButton
+                    key={tab.id}
+                    tab={tab}
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                  />
                 ))}
               </div>
               <div className="grid grid-cols-7 gap-2 sm:gap-3 mt-2">
                 {tabs.slice(7).map((tab) => (
-                  <TabButton key={tab.id} tab={tab} activeTab={activeTab} setActiveTab={setActiveTab} />
+                  <TabButton
+                    key={tab.id}
+                    tab={tab}
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                  />
                 ))}
               </div>
             </div>
@@ -112,9 +141,13 @@ export function CampaignDetails({ campaign, open, onOpenChange }: CampaignDetail
                             <Button
                               variant="outline"
                               size="icon"
-                              onClick={() => setActiveTab(prevTab?.id || tabs[tabs.length - 1].id)}
+                              onClick={() =>
+                                setActiveTab(
+                                  prevTab?.id || tabs[tabs.length - 1].id
+                                )
+                              }
                               disabled={!prevTab}
-                              className="w-10 h-10 rounded-full border-2 border-[#4DB05F] hover:bg-[#4DB05F] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-current flex items-center justify-center"
+                              className="w-10 h-10 rounded-full border-2 border-[#4DB05F] hover:bg-kfshover hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-current flex items-center justify-center"
                             >
                               <ArrowLeft className="h-4 w-4" />
                             </Button>
@@ -131,9 +164,11 @@ export function CampaignDetails({ campaign, open, onOpenChange }: CampaignDetail
                             <Button
                               variant="outline"
                               size="icon"
-                              onClick={() => setActiveTab(nextTab?.id || tabs[0].id)}
+                              onClick={() =>
+                                setActiveTab(nextTab?.id || tabs[0].id)
+                              }
                               disabled={!nextTab}
-                              className="w-10 h-10 rounded-full border-2 border-[#4DB05F] hover:bg-[#4DB05F] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-current flex items-center justify-center"
+                              className="w-10 h-10 rounded-full border-2 border-[#4DB05F] hover:bg-kfshover hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-current flex items-center justify-center"
                             >
                               <ArrowRight className="h-4 w-4" />
                             </Button>
@@ -150,23 +185,37 @@ export function CampaignDetails({ campaign, open, onOpenChange }: CampaignDetail
                   {activeTab === "about" ? (
                     <div className="space-y-8">
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">Proje Hakkında</h3>
-                        <p className="text-gray-600 leading-relaxed">{campaign.about_project}</p>
+                        <h3 className="text-lg font-semibold mb-2">
+                          Proje Hakkında
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          {campaign.about_project}
+                        </p>
                       </div>
 
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">Proje Özeti</h3>
-                        <p className="text-gray-600 leading-relaxed">{campaign.campaign_summary}</p>
+                        <h3 className="text-lg font-semibold mb-2">
+                          Proje Özeti
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          {campaign.campaign_summary}
+                        </p>
                       </div>
 
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">Hedef Kapsam</h3>
-                        <p className="text-gray-600 leading-relaxed">{campaign.goal_coverage_subject}</p>
+                        <h3 className="text-lg font-semibold mb-2">
+                          Hedef Kapsam
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          {campaign.goal_coverage_subject}
+                        </p>
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-8">
                         <div>
-                          <h3 className="text-lg font-semibold mb-2">Girişimci</h3>
+                          <h3 className="text-lg font-semibold mb-2">
+                            Girişimci
+                          </h3>
                           <div className="space-y-2 text-gray-600">
                             <p>{campaign.entrepreneur_name}</p>
                             <p>İletişim: {campaign.entrepreneurs_mails}</p>
@@ -174,11 +223,17 @@ export function CampaignDetails({ campaign, open, onOpenChange }: CampaignDetail
                         </div>
 
                         <div>
-                          <h3 className="text-lg font-semibold mb-2">Kampanya Durumu</h3>
+                          <h3 className="text-lg font-semibold mb-2">
+                            Kampanya Durumu
+                          </h3>
                           <div className="space-y-2 text-gray-600">
                             <p>Durum: {campaign.campaign_status}</p>
-                            <p>Oluşturulma: {formatDate(campaign.created_at)}</p>
-                            <p>Son Güncelleme: {formatDate(campaign.updated_at)}</p>
+                            <p>
+                              Oluşturulma: {formatDate(campaign.created_at)}
+                            </p>
+                            <p>
+                              Son Güncelleme: {formatDate(campaign.updated_at)}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -195,24 +250,24 @@ export function CampaignDetails({ campaign, open, onOpenChange }: CampaignDetail
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
 
 interface TabButtonProps {
-  tab: { id: string; label: string; icon: React.ElementType }
-  activeTab: string
-  setActiveTab: (id: string) => void
+  tab: { id: string; label: string; icon: React.ElementType };
+  activeTab: string;
+  setActiveTab: (id: string) => void;
 }
 
 function TabButton({ tab, activeTab, setActiveTab }: TabButtonProps) {
-  const Icon = tab.icon
+  const Icon = tab.icon;
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       className={cn(
         "bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer transition-all duration-200 p-2",
-        activeTab === tab.id ? "ring-2 ring-[#4DB05F]" : "",
+        activeTab === tab.id ? "ring-2 ring-[#4DB05F]" : ""
       )}
       onClick={() => setActiveTab(tab.id)}
     >
@@ -220,15 +275,18 @@ function TabButton({ tab, activeTab, setActiveTab }: TabButtonProps) {
         <div
           className={cn(
             "p-1.5 rounded-full mb-1",
-            activeTab === tab.id ? "bg-[#4DB05F] text-white" : "bg-gray-100 text-gray-600",
+            activeTab === tab.id
+              ? "bg-kfs text-white"
+              : "bg-gray-100 text-gray-600"
           )}
         >
           <Icon className="h-3 w-3 sm:h-4 sm:w-4" />
         </div>
-        <h3 className="text-xs font-medium text-center line-clamp-2">{tab.label}</h3>
+        <h3 className="text-xs font-medium text-center line-clamp-2">
+          {tab.label}
+        </h3>
       </div>
-      {activeTab === tab.id && <div className="bg-[#4DB05F] h-0.5 w-full mt-1" />}
+      {activeTab === tab.id && <div className="bg-kfs h-0.5 w-full mt-1" />}
     </motion.div>
-  )
+  );
 }
-

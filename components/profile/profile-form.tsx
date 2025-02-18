@@ -1,30 +1,36 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { Camera, Plus } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import type { UserProfile } from "@/types/profile"
+import { useState } from "react";
+import Image from "next/image";
+import { Camera, Plus } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import type { UserProfile } from "@/types/profile";
 
 interface ProfileFormProps {
-  initialData?: UserProfile
+  initialData?: UserProfile;
 }
 
 export function ProfileForm({ initialData }: ProfileFormProps) {
-  const [profileImage, setProfileImage] = useState<string | null>(null)
+  const [profileImage, setProfileImage] = useState<string | null>(null);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
+    const file = event.target.files?.[0];
     if (file) {
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onloadend = () => {
-        setProfileImage(reader.result as string)
-      }
-      reader.readAsDataURL(file)
+        setProfileImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   return (
     <form className="space-y-8">
@@ -48,15 +54,23 @@ export function ProfileForm({ initialData }: ProfileFormProps) {
           </div>
           <label
             htmlFor="profile-photo"
-            className="absolute bottom-0 right-0 w-8 h-8 bg-[#4DB05F] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#4DB05F]/90"
+            className="absolute bottom-0 right-0 w-8 h-8 bg-kfs rounded-full flex items-center justify-center cursor-pointer hover:bg-kfshover/90"
           >
             <Plus className="w-5 h-5 text-white" />
-            <input type="file" id="profile-photo" className="hidden" accept="image/*" onChange={handleImageUpload} />
+            <input
+              type="file"
+              id="profile-photo"
+              className="hidden"
+              accept="image/*"
+              onChange={handleImageUpload}
+            />
           </label>
         </div>
         <div>
           <h2 className="text-lg font-semibold mb-2">Fotoğraf Seç</h2>
-          <p className="text-sm text-gray-500">JPG, GIF veya PNG. Maksimum 5MB.</p>
+          <p className="text-sm text-gray-500">
+            JPG, GIF veya PNG. Maksimum 5MB.
+          </p>
         </div>
       </div>
 
@@ -66,19 +80,32 @@ export function ProfileForm({ initialData }: ProfileFormProps) {
           <label htmlFor="name" className="text-sm font-medium">
             Adınız
           </label>
-          <Input id="name" defaultValue={initialData?.name} className="border-[#4DB05F] rounded-xl" />
+          <Input
+            id="name"
+            defaultValue={initialData?.name}
+            className="border-[#4DB05F] rounded-xl"
+          />
         </div>
         <div className="space-y-2">
           <label htmlFor="surname" className="text-sm font-medium">
             Soyadınız
           </label>
-          <Input id="surname" defaultValue={initialData?.surname} className="border-[#4DB05F] rounded-xl" />
+          <Input
+            id="surname"
+            defaultValue={initialData?.surname}
+            className="border-[#4DB05F] rounded-xl"
+          />
         </div>
         <div className="space-y-2">
           <label htmlFor="email" className="text-sm font-medium">
             E-Posta
           </label>
-          <Input id="email" type="email" defaultValue={initialData?.email} className="border-[#4DB05F] rounded-xl" />
+          <Input
+            id="email"
+            type="email"
+            defaultValue={initialData?.email}
+            className="border-[#4DB05F] rounded-xl"
+          />
         </div>
         <div className="grid grid-cols-3 gap-2">
           <div className="space-y-2">
@@ -100,7 +127,12 @@ export function ProfileForm({ initialData }: ProfileFormProps) {
             <label htmlFor="phone" className="text-sm font-medium">
               Cep Telefonu
             </label>
-            <Input id="phone" type="tel" defaultValue={initialData?.phone} className="border-[#4DB05F] rounded-xl" />
+            <Input
+              id="phone"
+              type="tel"
+              defaultValue={initialData?.phone}
+              className="border-[#4DB05F] rounded-xl"
+            />
           </div>
         </div>
         <div className="space-y-2">
@@ -118,7 +150,12 @@ export function ProfileForm({ initialData }: ProfileFormProps) {
           <label htmlFor="website" className="text-sm font-medium">
             Web Sitesi
           </label>
-          <Input id="website" type="url" defaultValue={initialData?.webSite} className="border-[#4DB05F] rounded-xl" />
+          <Input
+            id="website"
+            type="url"
+            defaultValue={initialData?.webSite}
+            className="border-[#4DB05F] rounded-xl"
+          />
         </div>
         <div className="space-y-2">
           <label htmlFor="gender" className="text-sm font-medium">
@@ -216,11 +253,13 @@ export function ProfileForm({ initialData }: ProfileFormProps) {
 
       {/* Submit Button */}
       <div className="flex justify-end">
-        <Button type="submit" className="bg-[#4DB05F] hover:bg-[#4DB05F]/90 text-white px-8">
+        <Button
+          type="submit"
+          className="bg-kfs hover:bg-kfshover/90 text-white px-8"
+        >
           Kaydet
         </Button>
       </div>
     </form>
-  )
+  );
 }
-

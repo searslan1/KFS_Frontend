@@ -1,12 +1,19 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
-import { Wallet, HelpCircle, UserPlus, TrendingUp, RefreshCcw, Users } from "lucide-react"
-import React from "react" // Import React
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import {
+  Wallet,
+  HelpCircle,
+  UserPlus,
+  TrendingUp,
+  RefreshCcw,
+  Users,
+} from "lucide-react";
+import React from "react"; // Import React
 
 const menuItems = [
   {
@@ -39,10 +46,10 @@ const menuItems = [
     icon: Users,
     description: "Lider yatırımcı kulübüne katılın",
   },
-]
+];
 
 export default function InvestorPage() {
-  const [activeSection, setActiveSection] = useState("invest")
+  const [activeSection, setActiveSection] = useState("help"); // Başlangıç değeri "help" olarak ayarlandı
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -51,22 +58,30 @@ export default function InvestorPage() {
           {/* Top Navigation */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {menuItems.map((item) => {
-              const Icon = item.icon
+              const Icon = item.icon;
               return (
-                <motion.div key={item.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <motion.div
+                  key={item.id}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
                   <Button
                     variant="ghost"
                     className={cn(
                       "w-full h-[100px] flex flex-col items-center justify-center gap-2 p-4",
-                      activeSection === item.id ? "bg-[#4DB05F] text-white hover:bg-[#4DB05F]/90" : "hover:bg-gray-100",
+                      activeSection === item.id
+                        ? "bg-kfs text-white hover:bg-kfshover/90"
+                        : " border border-gray-300"
                     )}
                     onClick={() => setActiveSection(item.id)}
                   >
                     <Icon className="h-6 w-6" />
-                    <span className="text-sm font-semibold text-center">{item.title}</span>
+                    <span className="text-sm font-semibold text-center">
+                      {item.title}
+                    </span>
                   </Button>
                 </motion.div>
-              )
+              );
             })}
           </div>
 
@@ -77,30 +92,41 @@ export default function InvestorPage() {
                 <div
                   className={cn(
                     "p-3 rounded-full",
-                    activeSection === menuItems.find((item) => item.id === activeSection)?.id
-                      ? "bg-[#4DB05F] text-white"
-                      : "bg-gray-100",
+                    activeSection ===
+                      menuItems.find((item) => item.id === activeSection)?.id
+                      ? "bg-kfs text-white"
+                      : "bg-gray-100"
                   )}
                 >
-                  {React.createElement(menuItems.find((item) => item.id === activeSection)?.icon as React.ElementType, {
-                    className: "h-6 w-6",
-                  })}
+                  {React.createElement(
+                    menuItems.find((item) => item.id === activeSection)
+                      ?.icon as React.ElementType,
+                    {
+                      className: "h-6 w-6",
+                    }
+                  )}
                 </div>
               )}
               <div>
-                <h2 className="text-2xl font-bold">{menuItems.find((item) => item.id === activeSection)?.title}</h2>
+                <h2 className="text-2xl font-bold">
+                  {menuItems.find((item) => item.id === activeSection)?.title}
+                </h2>
                 <p className="text-sm text-gray-500">
-                  {menuItems.find((item) => item.id === activeSection)?.description}
+                  {
+                    menuItems.find((item) => item.id === activeSection)
+                      ?.description
+                  }
                 </p>
               </div>
             </div>
             <div className="prose max-w-none">
-              <p className="text-gray-500">Bu bölümün içeriği yakında eklenecektir.</p>
+              <p className="text-gray-500">
+                Bu bölümün içeriği yakında eklenecektir.
+              </p>
             </div>
           </Card>
         </div>
       </main>
     </div>
-  )
+  );
 }
-

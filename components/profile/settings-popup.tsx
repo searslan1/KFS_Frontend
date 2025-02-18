@@ -1,33 +1,39 @@
-import { useState, useEffect } from "react"
-import { X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { SecuritySettings } from "./security-settings"
-import { PrivacySettings } from "./privacy-settings"
-import { InvestmentSettings } from "./investment-settings"
+import { useState, useEffect } from "react";
+import { X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { SecuritySettings } from "./security-settings";
+import { PrivacySettings } from "./privacy-settings";
+import { InvestmentSettings } from "./investment-settings";
 
 const tabs = [
   { id: "security", label: "Güvenlik & Girişler" },
   { id: "privacy", label: "Gizlilik & Bildirim" },
   { id: "investment", label: "Yatırım Hesabım" },
-]
+];
 
-export function SettingsPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const [activeTab, setActiveTab] = useState("security")
+export function SettingsPopup({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
+  const [activeTab, setActiveTab] = useState("security");
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset"
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = "unset"
-    }
-  }, [isOpen])
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -44,7 +50,9 @@ export function SettingsPopup({ isOpen, onClose }: { isOpen: boolean; onClose: (
               <Button
                 key={tab.id}
                 variant={activeTab === tab.id ? "default" : "ghost"}
-                className={`w-full justify-start mb-2 ${activeTab === tab.id ? "bg-[#4DB05F] text-white" : ""}`}
+                className={`w-full justify-start mb-2 ${
+                  activeTab === tab.id ? "bg-kfs text-white" : ""
+                }`}
                 onClick={() => setActiveTab(tab.id)}
               >
                 {tab.label}
@@ -59,6 +67,5 @@ export function SettingsPopup({ isOpen, onClose }: { isOpen: boolean; onClose: (
         </div>
       </Card>
     </div>
-  )
+  );
 }
-

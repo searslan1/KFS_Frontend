@@ -1,46 +1,57 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { useLanguage } from "@/contexts/language-context"
-import { LinkedinIcon, GoogleIcon, AppleIcon } from "@/components/icons"
-import { SocialButton } from "./social-button"
-import { Eye, EyeOff } from "lucide-react"
-import { calculatePasswordStrength } from "@/lib/utils/password-strength"
-import { PasswordStrengthIndicator } from "@/components/ui/password-strength-indicator"
+import { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/language-context";
+import { LinkedinIcon, GoogleIcon, AppleIcon } from "@/components/icons";
+import { SocialButton } from "./social-button";
+import { Eye, EyeOff } from "lucide-react";
+import { calculatePasswordStrength } from "@/lib/utils/password-strength";
+import { PasswordStrengthIndicator } from "@/components/ui/password-strength-indicator";
 
 interface RegisterModalProps {
-  isOpen: boolean
-  onClose: () => void
-  onLoginClick: () => void
+  isOpen: boolean;
+  onClose: () => void;
+  onLoginClick: () => void;
 }
 
-export function RegisterModal({ isOpen, onClose, onLoginClick }: RegisterModalProps) {
-  const { t } = useLanguage()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+export function RegisterModal({
+  isOpen,
+  onClose,
+  onLoginClick,
+}: RegisterModalProps) {
+  const { t } = useLanguage();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     //setPasswordStrength(calculatePasswordStrength(password))
-  }, [password])
+  }, [password]);
 
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
     // Handle registration logic here
-    console.log("Registration submitted")
-    onClose()
-  }
+    console.log("Registration submitted");
+    onClose();
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md border-4 border-[#4DB05F] rounded-xl shadow-lg">
         <DialogHeader>
-          <DialogTitle className="text-center text-2xl font-bold">{t("register")}</DialogTitle>
+          <DialogTitle className="text-center text-2xl font-bold">
+            {t("register")}
+          </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -70,7 +81,11 @@ export function RegisterModal({ isOpen, onClose, onLoginClick }: RegisterModalPr
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
               >
-                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                {showPassword ? (
+                  <EyeOff className="h-5 w-5" />
+                ) : (
+                  <Eye className="h-5 w-5" />
+                )}
               </button>
             </div>
             <div className="mt-2">
@@ -93,7 +108,11 @@ export function RegisterModal({ isOpen, onClose, onLoginClick }: RegisterModalPr
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
               >
-                {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                {showConfirmPassword ? (
+                  <EyeOff className="h-5 w-5" />
+                ) : (
+                  <Eye className="h-5 w-5" />
+                )}
               </button>
             </div>
           </div>
@@ -111,18 +130,24 @@ export function RegisterModal({ isOpen, onClose, onLoginClick }: RegisterModalPr
               onClick={() => console.log("Apple register")}
             />
           </div>
-          <Button type="submit" className="w-full bg-[#4DB05F] hover:bg-[#4DB05F]/90 rounded-xl h-12">
+          <Button
+            type="submit"
+            className="w-full bg-kfs hover:bg-kfshover/90 rounded-xl h-12"
+          >
             {t("register")}
           </Button>
           <p className="text-center text-sm">
             {t("haveAccount")}{" "}
-            <button type="button" onClick={onLoginClick} className="text-[#4DB05F] hover:underline">
+            <button
+              type="button"
+              onClick={onLoginClick}
+              className="text-[#4DB05F] hover:underline"
+            >
               {t("login")}
             </button>
           </p>
         </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
-

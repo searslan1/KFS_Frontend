@@ -6,7 +6,8 @@ import { allCampaigns } from "@/lib/mockData";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Filter, Search } from "lucide-react";
+import { Filter } from "lucide-react";
+import { Search } from "@/components/ui/seacrh";
 import {
   Select,
   SelectContent,
@@ -21,7 +22,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
 
 type SortOption = "fundingAsc" | "fundingDesc" | "dateAsc" | "dateDesc";
 type FundingStatus = "all" | "active" | "completed" | "upcoming";
@@ -128,7 +128,7 @@ export default function CampaignsPage() {
                           >
                             {sector}
                           </label>
-                        </div>      
+                        </div>
                       )
                     )}
                   </AccordionContent>
@@ -191,8 +191,7 @@ export default function CampaignsPage() {
             {/* Hızlı Filtreleme Barı */}
             <div className="bg-white rounded-lg shadow-md p-4 mb-6 flex flex-wrap items-center gap-4 sticky top-[72px] z-20">
               <div className="flex items-center w-full mb-4">
-                <Search className="w-5 h-5 text-gray-500 mr-2" />
-                <Input
+                <Search
                   type="text"
                   placeholder="Kampanya ara..."
                   value={searchTerm}
