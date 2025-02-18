@@ -1,86 +1,86 @@
 export interface Campaign {
-  id: string // We'll keep this as string for mock data though DB uses SERIAL
-  user_id: number
-  campaign_logo: string
-  entrepreneur_name: string
-  campaign_name: string
-  campaign_description: string
-  about_project: string
-  campaign_summary: string
-  goal_coverage_subject: string
-  entrepreneur_stage_id: number
-  location: string
-  category: string
-  business_models_id: number
-  sector: string
-  entrepreneurs_mails: string
-  is_past_campaign: boolean
-  campaign_status: string
-  created_at: string // We'll use string for dates in mock data
-  updated_at: string
+  id: string; // We'll keep this as string for mock data though DB uses SERIAL
+  user_id: number;
+  campaign_logo: string;
+  entrepreneur_name: string;
+  campaign_name: string;
+  campaign_description: string;
+  about_project: string;
+  campaign_summary: string;
+  goal_coverage_subject: string;
+  entrepreneur_stage_id: number;
+  location: string;
+  category: string;
+  business_models_id: number;
+  sector: string;
+  entrepreneurs_mails: string;
+  is_past_campaign: boolean;
+  campaign_status: string;
+  created_at: string; // We'll use string for dates in mock data
+  updated_at: string;
   // Additional fields needed for UI that aren't in DB schema
-  currentAmount: number
-  goalAmount: number
-  daysLeft: number
-  teamSize: number
-  technology: string
-  companyName: string
-  imageUrl: string
-  startDate: string
-  endDate: string
-  funding: Funding
-  market_analysis?: string
-  competition_analysis?: string
-  target_audience?: string
+  currentAmount: number;
+  goalAmount: number;
+  daysLeft: number;
+  teamSize: number;
+  technology: string;
+  companyName: string;
+  imageUrl: string;
+  startDate: string;
+  endDate: string;
+  funding: Funding;
+  market_analysis?: string;
+  competition_analysis?: string;
+  target_audience?: string;
   swot?: {
-    strengths: string[]
-    weaknesses: string[]
-    opportunities: string[]
-    threats: string[]
-  }
-  strategies?: string
-  businessPlan?: string
-  investorPresentation?: string
-  risks?: string
+    strengths: string[];
+    weaknesses: string[];
+    opportunities: string[];
+    threats: string[];
+  };
+  strategies?: string;
+  businessPlan?: string;
+  investorPresentation?: string;
+  risks?: string;
+  investorCount?: number; // Add this line
 }
-
 export interface UpcomingCampaign {
-  id: string
-  title: string
-  description: string
-  imageUrl: string
-  expectedLaunchDate: string
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  expectedLaunchDate: string;
 }
 
 export interface SuccessfulCampaign {
-  id: string
-  title: string
-  description: string
-  imageUrl: string
-  raisedAmount: number
-  completionDate: string
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  raisedAmount: number;
+  completionDate: string;
 }
 
 export interface Partner {
-  id: string
-  name: string
-  logoUrl: string
+  id: string;
+  name: string;
+  logoUrl: string;
 }
 
 export interface Subsidiary {
-  id: string
-  name: string
-  description: string
-  logoUrl: string
+  id: string;
+  name: string;
+  description: string;
+  logoUrl: string;
 }
 
 export interface Funding {
-  need_amount_fund: number
-  amount_given_share?: number
-  number_sale_share?: number
-  post_funding_capital?: number
-  sales_share_price?: number
-  sales_nominal_share_price?: number
+  need_amount_fund: number;
+  amount_given_share?: number;
+  number_sale_share?: number;
+  post_funding_capital?: number;
+  sales_share_price?: number;
+  sales_nominal_share_price?: number;
 }
 
 export const allCampaigns: Campaign[] = [
@@ -90,7 +90,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Ahmet Yılmaz",
     campaign_name: "Yenilenebilir Enerji Projesi",
-    campaign_description: "Güneş enerjisi ile çalışan akıllı şehir sistemleri geliştiriyoruz.",
+    campaign_description:
+      "Güneş enerjisi ile çalışan akıllı şehir sistemleri geliştiriyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Enerji verimliliği",
@@ -123,10 +124,22 @@ export const allCampaigns: Campaign[] = [
       sales_nominal_share_price: 100,
     },
     swot: {
-      strengths: ["Yenilikçi teknoloji", "Güçlü Ar-Ge ekibi", "Geniş pazar potansiyeli"],
+      strengths: [
+        "Yenilikçi teknoloji",
+        "Güçlü Ar-Ge ekibi",
+        "Geniş pazar potansiyeli",
+      ],
       weaknesses: ["Sınırlı finansal kaynaklar", "Marka bilinirliği eksikliği"],
-      opportunities: ["Artan çevre bilinci", "Devlet teşvikleri", "Uluslararası pazar fırsatları"],
-      threats: ["Hızlı teknolojik değişimler", "Güçlü rakipler", "Ekonomik belirsizlikler"],
+      opportunities: [
+        "Artan çevre bilinci",
+        "Devlet teşvikleri",
+        "Uluslararası pazar fırsatları",
+      ],
+      threats: [
+        "Hızlı teknolojik değişimler",
+        "Güçlü rakipler",
+        "Ekonomik belirsizlikler",
+      ],
     },
     strategies:
       "Şirketimiz, yenilikçi teknolojimizi kullanarak enerji verimliliği pazarında lider konuma gelmeyi hedeflemektedir. Bunu yaparken, Ar-Ge yatırımlarımızı artırarak ürün yelpazemizi genişletmeyi ve uluslararası pazarlara açılmayı planlıyoruz.",
@@ -143,7 +156,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Ayşe Kaya",
     campaign_name: "Biyoteknoloji Girişimi",
-    campaign_description: "Yapay organ üretimi için yenilikçi teknoloji geliştiriyoruz.",
+    campaign_description:
+      "Yapay organ üretimi için yenilikçi teknoloji geliştiriyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Sağlık teknolojileri",
@@ -181,7 +195,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Mehmet Öz",
     campaign_name: "Eğitim Teknolojileri Platformu",
-    campaign_description: "Yapay zeka destekli kişiselleştirilmiş öğrenme deneyimi sunuyoruz.",
+    campaign_description:
+      "Yapay zeka destekli kişiselleştirilmiş öğrenme deneyimi sunuyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Eğitim teknolojileri",
@@ -219,7 +234,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Fatma Demir",
     campaign_name: "Sürdürülebilir Tarım Projesi",
-    campaign_description: "Akıllı sulama sistemleri ve verimli toprak yönetimi çözümleri.",
+    campaign_description:
+      "Akıllı sulama sistemleri ve verimli toprak yönetimi çözümleri.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Sürdürülebilir tarım",
@@ -257,7 +273,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Ali Can",
     campaign_name: "Temiz Okyanus Girişimi",
-    campaign_description: "Okyanus temizleme ve plastik geri dönüşüm teknolojileri geliştiriyoruz.",
+    campaign_description:
+      "Okyanus temizleme ve plastik geri dönüşüm teknolojileri geliştiriyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Çevre koruma",
@@ -295,7 +312,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Zeynep Gül",
     campaign_name: "Akıllı Ulaşım Çözümleri",
-    campaign_description: "Trafik optimizasyonu ve elektrikli araç şarj istasyonları ağı kuruyoruz.",
+    campaign_description:
+      "Trafik optimizasyonu ve elektrikli araç şarj istasyonları ağı kuruyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Ulaşım teknolojileri",
@@ -333,7 +351,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Veli Bayram",
     campaign_name: "Yapay Zeka Destekli Sağlık Asistanı",
-    campaign_description: "Kişiselleştirilmiş tıbbi tanı ve tedavi önerileri sunan AI platformu.",
+    campaign_description:
+      "Kişiselleştirilmiş tıbbi tanı ve tedavi önerileri sunan AI platformu.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Sağlık teknolojileri",
@@ -371,7 +390,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Ayşe Yılmaz",
     campaign_name: "Uzay Madenciliği Araştırma Projesi",
-    campaign_description: "Asteroidlerden değerli maden çıkarma teknolojileri geliştiriyoruz.",
+    campaign_description:
+      "Asteroidlerden değerli maden çıkarma teknolojileri geliştiriyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Uzay teknolojileri",
@@ -409,7 +429,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Mehmet Demir",
     campaign_name: "Biyoçeşitlilik Koruma İnisiyatifi",
-    campaign_description: "Nesli tükenmekte olan türleri koruma ve habitat restorasyon projesi.",
+    campaign_description:
+      "Nesli tükenmekte olan türleri koruma ve habitat restorasyon projesi.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Çevre koruma",
@@ -447,7 +468,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Fatma Can",
     campaign_name: "Akıllı Ev Otomasyon Sistemleri",
-    campaign_description: "Enerji tasarruflu ve kullanıcı dostu akıllı ev çözümleri geliştiriyoruz.",
+    campaign_description:
+      "Enerji tasarruflu ve kullanıcı dostu akıllı ev çözümleri geliştiriyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Ev otomasyonu",
@@ -485,7 +507,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Ali Gül",
     campaign_name: "Dijital Sanat Platformu",
-    campaign_description: "Sanatçılar için blockchain tabanlı NFT pazaryeri oluşturuyoruz.",
+    campaign_description:
+      "Sanatçılar için blockchain tabanlı NFT pazaryeri oluşturuyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Dijital sanat",
@@ -523,7 +546,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Zeynep Bayram",
     campaign_name: "Gıda Güvenliği Takip Sistemi",
-    campaign_description: "Tarımdan sofraya gıda güvenliğini sağlayan blockchain çözümü.",
+    campaign_description:
+      "Tarımdan sofraya gıda güvenliğini sağlayan blockchain çözümü.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Gıda güvenliği",
@@ -561,7 +585,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Veli Yılmaz",
     campaign_name: "Yapay Zeka Destekli Hukuk Asistanı",
-    campaign_description: "Hukuki süreçleri otomatikleştiren ve analiz eden AI platformu.",
+    campaign_description:
+      "Hukuki süreçleri otomatikleştiren ve analiz eden AI platformu.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Hukuk teknolojileri",
@@ -599,7 +624,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Ayşe Can",
     campaign_name: "Sanal Gerçeklik Eğitim Platformu",
-    campaign_description: "Endüstriyel eğitimler için immersif VR deneyimleri sunuyoruz.",
+    campaign_description:
+      "Endüstriyel eğitimler için immersif VR deneyimleri sunuyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Eğitim teknolojileri",
@@ -637,7 +663,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Mehmet Gül",
     campaign_name: "Akıllı Şehir Atık Yönetimi",
-    campaign_description: "IoT sensörleri ile optimize edilmiş şehir atık toplama sistemi.",
+    campaign_description:
+      "IoT sensörleri ile optimize edilmiş şehir atık toplama sistemi.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Atık yönetimi",
@@ -675,7 +702,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Fatma Bayram",
     campaign_name: "Drone ile Ağaçlandırma Projesi",
-    campaign_description: "Otonom dronlar kullanarak geniş alanları hızlıca ağaçlandırıyoruz.",
+    campaign_description:
+      "Otonom dronlar kullanarak geniş alanları hızlıca ağaçlandırıyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Ormancılık",
@@ -713,7 +741,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Ali Yılmaz",
     campaign_name: "Kişiselleştirilmiş Beslenme AI",
-    campaign_description: "Genetik ve yaşam tarzına göre özelleştirilmiş beslenme planları sunan AI.",
+    campaign_description:
+      "Genetik ve yaşam tarzına göre özelleştirilmiş beslenme planları sunan AI.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Sağlık teknolojileri",
@@ -751,7 +780,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Zeynep Can",
     campaign_name: "Mikroplastik Temizleme Teknolojisi",
-    campaign_description: "Okyanuslardaki mikroplastikleri temizleyen nano-robot teknolojisi.",
+    campaign_description:
+      "Okyanuslardaki mikroplastikleri temizleyen nano-robot teknolojisi.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Çevre koruma",
@@ -789,7 +819,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Veli Gül",
     campaign_name: "Quantum Bilgisayar Araştırma Projesi",
-    campaign_description: "Quantum bilgisayarların pratik uygulamalarını geliştiriyoruz.",
+    campaign_description:
+      "Quantum bilgisayarların pratik uygulamalarını geliştiriyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Teknoloji",
@@ -827,7 +858,8 @@ export const allCampaigns: Campaign[] = [
     campaign_logo: "/placeholder.svg",
     entrepreneur_name: "Ayşe Bayram",
     campaign_name: "Biyomimetik Yapay Zeka",
-    campaign_description: "Doğadan ilham alan, sürdürülebilir AI çözümleri geliştiriyoruz.",
+    campaign_description:
+      "Doğadan ilham alan, sürdürülebilir AI çözümleri geliştiriyoruz.",
     about_project: "Detaylı proje açıklaması...",
     campaign_summary: "Kısa proje özeti",
     goal_coverage_subject: "Yapay zeka",
@@ -859,15 +891,16 @@ export const allCampaigns: Campaign[] = [
       sales_nominal_share_price: 160,
     },
   },
-]
+];
 
-export const featuredCampaigns = allCampaigns.slice(0, 3)
+export const featuredCampaigns = allCampaigns.slice(0, 3);
 
 export const upcomingCampaigns: UpcomingCampaign[] = [
   {
     id: "uc1",
     title: "Akıllı Şehir Çözümleri",
-    description: "Şehirleri daha yaşanabilir ve sürdürülebilir hale getiren IoT tabanlı çözümler",
+    description:
+      "Şehirleri daha yaşanabilir ve sürdürülebilir hale getiren IoT tabanlı çözümler",
     imageUrl: "/placeholder.svg",
     expectedLaunchDate: "1 Ağustos 2024",
   },
@@ -885,7 +918,7 @@ export const upcomingCampaigns: UpcomingCampaign[] = [
     imageUrl: "/placeholder.svg",
     expectedLaunchDate: "1 Ekim 2024",
   },
-]
+];
 
 export const successfulCampaigns: SuccessfulCampaign[] = [
   {
@@ -912,7 +945,7 @@ export const successfulCampaigns: SuccessfulCampaign[] = [
     raisedAmount: 1000000,
     completionDate: "20 Nisan 2024",
   },
-]
+];
 
 export const partners: Partner[] = [
   {
@@ -935,46 +968,58 @@ export const partners: Partner[] = [
     name: "SmartCapital Yatırım",
     logoUrl: "/placeholder.svg",
   },
-]
+];
 
 export const subsidiaries: Subsidiary[] = [
   {
     id: "bilisim",
     name: "ARD Bilişim",
-    description: "Deloitte EMEA Fast 500 ve Turkey Fast 50 Winner! ARD Bilişim bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
-    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-M7nMOpwJstRMSJlp7U6ZCCdXXalqRK.png",
+    description:
+      "Deloitte EMEA Fast 500 ve Turkey Fast 50 Winner! ARD Bilişim bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
+    logoUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-M7nMOpwJstRMSJlp7U6ZCCdXXalqRK.png",
   },
   {
     id: "enerji",
     name: "ARD Enerji",
-    description: "Çevreye duyarlı teknolojiler… ARD Enerji bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
-    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Du3iDwbNhrz54oB8ODX2iWxTfHtvxU.png",
+    description:
+      "Çevreye duyarlı teknolojiler… ARD Enerji bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
+    logoUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Du3iDwbNhrz54oB8ODX2iWxTfHtvxU.png",
   },
   {
     id: "saglik",
     name: "ARD Sağlık",
-    description: "Sağlık alanında en ileri teknoloji. ARD Sağlık bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
-    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-QAgtdSGbP4NMFXUd1WZplQojV2C8c5.png",
+    description:
+      "Sağlık alanında en ileri teknoloji. ARD Sağlık bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
+    logoUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-QAgtdSGbP4NMFXUd1WZplQojV2C8c5.png",
   },
   {
     id: "insaat",
     name: "ARD İnşaat",
-    description: "Geleceği inşa ediyoruz! ARD İnşaat bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
-    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-C1NaTZo9xumyN16FyLb7oeGeptp4kD.png",
+    description:
+      "Geleceği inşa ediyoruz! ARD İnşaat bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
+    logoUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-C1NaTZo9xumyN16FyLb7oeGeptp4kD.png",
   },
   {
     id: "savunma",
     name: "ARD Savunma",
-    description: "En yeni teknoloji, en yüksek kalite! ARD Savunma bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
-    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-6UDGjADUrPtPLnCvaehPBdJhVt9CHo.png",
+    description:
+      "En yeni teknoloji, en yüksek kalite! ARD Savunma bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
+    logoUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-6UDGjADUrPtPLnCvaehPBdJhVt9CHo.png",
   },
   {
     id: "danismanlik",
     name: "ARD Danışmanlık",
-    description: "Kurumunuzun Geleceğini Şansa Bırakmayın. ARD Danışmanlık bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
-    logoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-AXUVmHgdtCnnWWE96U7I7u4B1eleDe.png",
+    description:
+      "Kurumunuzun Geleceğini Şansa Bırakmayın. ARD Danışmanlık bir ARD GRUP HOLDİNG AŞ. iştirakidir.",
+    logoUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-AXUVmHgdtCnnWWE96U7I7u4B1eleDe.png",
   },
-]
+];
 
 export const successClubCampaigns = [
   {
@@ -1097,5 +1142,4 @@ export const successClubCampaigns = [
     logo: "/placeholder.svg",
     amount: 50000,
   },
-]
-
+];

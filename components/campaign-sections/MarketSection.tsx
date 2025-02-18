@@ -1,23 +1,28 @@
-"use client"
+"use client";
 
-import { useState, type React } from "react"
-import { Card } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { FileText, Upload, HelpCircle, Info } from "lucide-react"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { cn } from "@/lib/utils"
+import { useState, type React } from "react";
+import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { FileText, Upload, HelpCircle, Info } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 interface MarketSection {
-  id: string
-  title: string
-  description: string
-  content: string
-  maxLength: number
-  attachments: File[]
+  id: string;
+  title: string;
+  description: string;
+  content: string;
+  maxLength: number;
+  attachments: File[];
 }
 
 export function MarketSection() {
@@ -25,7 +30,8 @@ export function MarketSection() {
     {
       id: "market",
       title: "Pazar Hakkında Özet Bilgi",
-      description: "Hedeflediğiniz pazarın büyüklüğü, dinamikleri ve büyüme potansiyelini açıklayın",
+      description:
+        "Hedeflediğiniz pazarın büyüklüğü, dinamikleri ve büyüme potansiyelini açıklayın",
       content: "",
       maxLength: 4000,
       attachments: [],
@@ -33,7 +39,8 @@ export function MarketSection() {
     {
       id: "competition",
       title: "Rekabet Hakkında Özet Bilgi",
-      description: "Rakipleriniz ve rekabet avantajlarınız hakkında bilgi verin",
+      description:
+        "Rakipleriniz ve rekabet avantajlarınız hakkında bilgi verin",
       content: "",
       maxLength: 4000,
       attachments: [],
@@ -41,7 +48,8 @@ export function MarketSection() {
     {
       id: "target",
       title: "Hedef Kitle Hakkında Özet Bilgi",
-      description: "Hedef müşteri profilinizi ve müşteri kazanım stratejinizi açıklayın",
+      description:
+        "Hedef müşteri profilinizi ve müşteri kazanım stratejinizi açıklayın",
       content: "",
       maxLength: 4000,
       attachments: [],
@@ -54,66 +62,83 @@ export function MarketSection() {
       maxLength: 4000,
       attachments: [],
     },
-  ])
+  ]);
 
-  const [dragOverSection, setDragOverSection] = useState<string | null>(null)
+  const [dragOverSection, setDragOverSection] = useState<string | null>(null);
 
   const handleContentChange = (id: string, value: string) => {
     setSections((prev) =>
-      prev.map((section) => (section.id === id ? { ...section, content: value.slice(0, section.maxLength) } : section)),
-    )
-  }
+      prev.map((section) =>
+        section.id === id
+          ? { ...section, content: value.slice(0, section.maxLength) }
+          : section
+      )
+    );
+  };
 
   const handleDragOver = (e: React.DragEvent, sectionId: string) => {
-    e.preventDefault()
-    setDragOverSection(sectionId)
-  }
+    e.preventDefault();
+    setDragOverSection(sectionId);
+  };
 
   const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault()
-    setDragOverSection(null)
-  }
+    e.preventDefault();
+    setDragOverSection(null);
+  };
 
   const handleDrop = (e: React.DragEvent, sectionId: string) => {
-    e.preventDefault()
-    setDragOverSection(null)
+    e.preventDefault();
+    setDragOverSection(null);
 
-    const files = Array.from(e.dataTransfer.files)
+    const files = Array.from(e.dataTransfer.files);
     setSections((prev) =>
       prev.map((section) =>
-        section.id === sectionId ? { ...section, attachments: [...section.attachments, ...files] } : section,
-      ),
-    )
-  }
+        section.id === sectionId
+          ? { ...section, attachments: [...section.attachments, ...files] }
+          : section
+      )
+    );
+  };
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>, sectionId: string) => {
-    if (!e.target.files?.length) return
+  const handleFileSelect = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    sectionId: string
+  ) => {
+    if (!e.target.files?.length) return;
 
-    const files = Array.from(e.target.files)
+    const files = Array.from(e.target.files);
     setSections((prev) =>
       prev.map((section) =>
-        section.id === sectionId ? { ...section, attachments: [...section.attachments, ...files] } : section,
-      ),
-    )
-  }
+        section.id === sectionId
+          ? { ...section, attachments: [...section.attachments, ...files] }
+          : section
+      )
+    );
+  };
 
   const removeFile = (sectionId: string, fileIndex: number) => {
     setSections((prev) =>
       prev.map((section) =>
         section.id === sectionId
-          ? { ...section, attachments: section.attachments.filter((_, index) => index !== fileIndex) }
-          : section,
-      ),
-    )
-  }
+          ? {
+              ...section,
+              attachments: section.attachments.filter(
+                (_, index) => index !== fileIndex
+              ),
+            }
+          : section
+      )
+    );
+  };
 
   return (
     <div className="space-y-8">
       <Alert>
         <Info className="h-4 w-4" />
         <AlertDescription>
-          Pazar, rekabet ve hedef kitle analizleriniz, yatırımcıların projenizi değerlendirmesinde önemli rol oynar.
-          Lütfen detaylı ve net bilgiler verin.
+          Pazar, rekabet ve hedef kitle analizleriniz, yatırımcıların projenizi
+          değerlendirmesinde önemli rol oynar. Lütfen detaylı ve net bilgiler
+          verin.
         </AlertDescription>
       </Alert>
 
@@ -123,7 +148,9 @@ export function MarketSection() {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <Label className="text-lg font-semibold">{section.title}</Label>
+                  <Label className="text-lg font-semibold">
+                    {section.title}
+                  </Label>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger>
@@ -143,7 +170,9 @@ export function MarketSection() {
               <div className="relative">
                 <Textarea
                   value={section.content}
-                  onChange={(e) => handleContentChange(section.id, e.target.value)}
+                  onChange={(e) =>
+                    handleContentChange(section.id, e.target.value)
+                  }
                   className="min-h-[200px] resize-y"
                   placeholder={`${section.title} hakkında detaylı bilgi verin...`}
                 />
@@ -155,7 +184,9 @@ export function MarketSection() {
               <div
                 className={cn(
                   "border-2 border-dashed rounded-lg p-6 transition-colors",
-                  dragOverSection === section.id ? "border-[#4DB05F] bg-[#4DB05F]/5" : "border-gray-200",
+                  dragOverSection === section.id
+                    ? "border-[#4DB05F] bg-kfs/5"
+                    : "border-gray-200"
                 )}
                 onDragOver={(e) => handleDragOver(e, section.id)}
                 onDragLeave={handleDragLeave}
@@ -166,7 +197,9 @@ export function MarketSection() {
                     <Upload className="h-6 w-6 text-gray-600" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">İlgili Dokümanları Yükleyin</p>
+                    <p className="font-medium text-gray-800">
+                      İlgili Dokümanları Yükleyin
+                    </p>
                     <p className="text-sm text-gray-500 mt-1">
                       Dosyaları sürükleyip bırakın veya bilgisayarınızdan seçin
                     </p>
@@ -189,7 +222,10 @@ export function MarketSection() {
                   <Label>Yüklenen Dosyalar</Label>
                   <div className="grid gap-2">
                     {section.attachments.map((file, index) => (
-                      <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm">
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"
+                      >
                         <div className="flex items-center gap-2">
                           <FileText className="h-4 w-4 text-gray-400" />
                           <span>{file.name}</span>
@@ -226,7 +262,10 @@ export function MarketSection() {
                       <HelpCircle className="h-4 w-4 text-gray-400" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Total Addressable Market - Toplam ulaşılabilir pazar büyüklüğü</p>
+                      <p>
+                        Total Addressable Market - Toplam ulaşılabilir pazar
+                        büyüklüğü
+                      </p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -242,7 +281,10 @@ export function MarketSection() {
                       <HelpCircle className="h-4 w-4 text-gray-400" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Serviceable Addressable Market - Hizmet verilebilir pazar büyüklüğü</p>
+                      <p>
+                        Serviceable Addressable Market - Hizmet verilebilir
+                        pazar büyüklüğü
+                      </p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -258,7 +300,10 @@ export function MarketSection() {
                       <HelpCircle className="h-4 w-4 text-gray-400" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Serviceable Obtainable Market - Elde edilebilir pazar payı</p>
+                      <p>
+                        Serviceable Obtainable Market - Elde edilebilir pazar
+                        payı
+                      </p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -273,6 +318,5 @@ export function MarketSection() {
         </div>
       </Card>
     </div>
-  )
+  );
 }
-

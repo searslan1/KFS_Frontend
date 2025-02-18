@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       colors: {
         kfs: "#00a63e", // 00c950
+        kfshover: "#008236",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -21,10 +22,6 @@ const config: Config = {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
-        },
-        kfs: {
-          DEFAULT: "hsl(var(--kfs))",
-          foreground: "hsl(var(--kfs-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",

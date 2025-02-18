@@ -1,66 +1,87 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { motion } from "framer-motion"
-import { ImageIcon, X, Plus, Youtube, Info, HelpCircle, Trash2, Eye } from "lucide-react"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import Image from "next/image"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { motion } from "framer-motion";
+import {
+  ImageIcon,
+  X,
+  Plus,
+  Youtube,
+  Info,
+  HelpCircle,
+  Trash2,
+  Eye,
+} from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface MediaFile {
-  id: string
-  file: File
-  preview: string
-  type: "showcase" | "other"
+  id: string;
+  file: File;
+  preview: string;
+  type: "showcase" | "other";
 }
 
 interface VideoLink {
-  id: string
-  url: string
-  platform: "youtube" | "vimeo" | null
+  id: string;
+  url: string;
+  platform: "youtube" | "vimeo" | null;
 }
 
 export function MediaSection() {
-  const [mediaFiles, setMediaFiles] = useState<MediaFile[]>([])
-  const [videoLinks, setVideoLinks] = useState<VideoLink[]>([])
-  const [newVideoLink, setNewVideoLink] = useState("")
-  const [dragOver, setDragOver] = useState<"showcase" | "other" | null>(null)
+  const [mediaFiles, setMediaFiles] = useState<MediaFile[]>([]);
+  const [videoLinks, setVideoLinks] = useState<VideoLink[]>([]);
+  const [newVideoLink, setNewVideoLink] = useState("");
+  const [dragOver, setDragOver] = useState<"showcase" | "other" | null>(null);
 
   const handleDragOver = (e: React.DragEvent, type: "showcase" | "other") => {
-    e.preventDefault()
-    setDragOver(type)
-  }
+    e.preventDefault();
+    setDragOver(type);
+  };
 
   const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault()
-    setDragOver(null)
-  }
+    e.preventDefault();
+    setDragOver(null);
+  };
 
   const handleDrop = async (e: React.DragEvent, type: "showcase" | "other") => {
-    e.preventDefault()
-    setDragOver(null)
+    e.preventDefault();
+    setDragOver(null);
 
-    const files = Array.from(e.dataTransfer.files).filter((file) => file.type.startsWith("image/"))
+    const files = Array.from(e.dataTransfer.files).filter((file) =>
+      file.type.startsWith("image/")
+    );
 
-    handleFiles(files, type)
-  }
+    handleFiles(files, type);
+  };
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>, type: "showcase" | "other") => {
-    if (!e.target.files?.length) return
+  const handleFileSelect = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    type: "showcase" | "other"
+  ) => {
+    if (!e.target.files?.length) return;
 
-    const files = Array.from(e.target.files).filter((file) => file.type.startsWith("image/"))
-    handleFiles(files, type)
-  }
+    const files = Array.from(e.target.files).filter((file) =>
+      file.type.startsWith("image/")
+    );
+    handleFiles(files, type);
+  };
 
   const handleFiles = (files: File[], type: "showcase" | "other") => {
     // If it's a showcase image, only keep one
     if (type === "showcase") {
-      setMediaFiles((prev) => prev.filter((file) => file.type !== "showcase"))
+      setMediaFiles((prev) => prev.filter((file) => file.type !== "showcase"));
     }
 
     const newFiles = files.map((file) => ({
@@ -68,32 +89,33 @@ export function MediaSection() {
       file,
       preview: URL.createObjectURL(file),
       type,
-    }))
+    }));
 
-    setMediaFiles((prev) => [...prev, ...newFiles])
-  }
+    setMediaFiles((prev) => [...prev, ...newFiles]);
+  };
 
   const removeFile = (id: string) => {
     setMediaFiles((prev) => {
-      const fileToRemove = prev.find((file) => file.id === id)
+      const fileToRemove = prev.find((file) => file.id === id);
       if (fileToRemove) {
-        URL.revokeObjectURL(fileToRemove.preview)
+        URL.revokeObjectURL(fileToRemove.preview);
       }
-      return prev.filter((file) => file.id !== id)
-    })
-  }
+      return prev.filter((file) => file.id !== id);
+    });
+  };
 
   const addVideoLink = () => {
-    if (!newVideoLink.trim()) return
+    if (!newVideoLink.trim()) return;
 
-    const youtubeRegex = /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/
-    const vimeoRegex = /(?:vimeo\.com\/)(\d+)/
+    const youtubeRegex =
+      /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/;
+    const vimeoRegex = /(?:vimeo\.com\/)(\d+)/;
 
-    let platform: "youtube" | "vimeo" | null = null
+    let platform: "youtube" | "vimeo" | null = null;
     if (youtubeRegex.test(newVideoLink)) {
-      platform = "youtube"
+      platform = "youtube";
     } else if (vimeoRegex.test(newVideoLink)) {
-      platform = "vimeo"
+      platform = "vimeo";
     }
 
     setVideoLinks((prev) => [
@@ -103,34 +125,38 @@ export function MediaSection() {
         url: newVideoLink,
         platform,
       },
-    ])
-    setNewVideoLink("")
-  }
+    ]);
+    setNewVideoLink("");
+  };
 
   const removeVideoLink = (id: string) => {
-    setVideoLinks((prev) => prev.filter((link) => link.id !== id))
-  }
+    setVideoLinks((prev) => prev.filter((link) => link.id !== id));
+  };
 
-  const getVideoThumbnail = (url: string, platform: "youtube" | "vimeo" | null) => {
+  const getVideoThumbnail = (
+    url: string,
+    platform: "youtube" | "vimeo" | null
+  ) => {
     if (platform === "youtube") {
       const match = url.match(
-        /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/,
-      )
+        /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/
+      );
       if (match && match[1]) {
-        return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`
+        return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
       }
     }
     // For Vimeo, we would need to use their API to get thumbnails
-    return "/placeholder.svg"
-  }
+    return "/placeholder.svg";
+  };
 
   return (
     <div className="space-y-8">
       <Alert className="bg-blue-50 border-blue-200">
         <Info className="h-4 w-4 text-blue-600" />
         <AlertDescription className="text-blue-700">
-          Kampanyanızı en iyi şekilde tanıtmak için yüksek kaliteli görseller ve videolar kullanın. Vitrin fotoğrafı
-          kampanya listeleme sayfasında görünecek ana görseldir.
+          Kampanyanızı en iyi şekilde tanıtmak için yüksek kaliteli görseller ve
+          videolar kullanın. Vitrin fotoğrafı kampanya listeleme sayfasında
+          görünecek ana görseldir.
         </AlertDescription>
       </Alert>
 
@@ -140,7 +166,9 @@ export function MediaSection() {
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <Label className="text-lg font-semibold">Vitrin Fotoğrafı</Label>
-              <p className="text-sm text-gray-500">Kampanyanızı en iyi yansıtan bir görsel seçin</p>
+              <p className="text-sm text-gray-500">
+                Kampanyanızı en iyi yansıtan bir görsel seçin
+              </p>
             </div>
             <TooltipProvider>
               <Tooltip>
@@ -157,8 +185,12 @@ export function MediaSection() {
           <div
             className={cn(
               "border-2 border-dashed rounded-lg transition-colors",
-              dragOver === "showcase" ? "border-[#4DB05F] bg-[#4DB05F]/5" : "border-gray-200",
-              mediaFiles.some((file) => file.type === "showcase") ? "p-4" : "p-8",
+              dragOver === "showcase"
+                ? "border-[#4DB05F] bg-kfs/5"
+                : "border-gray-200",
+              mediaFiles.some((file) => file.type === "showcase")
+                ? "p-4"
+                : "p-8"
             )}
             onDragOver={(e) => handleDragOver(e, "showcase")}
             onDragLeave={handleDragLeave}
@@ -202,8 +234,12 @@ export function MediaSection() {
                   <ImageIcon className="h-6 w-6 text-gray-600" />
                 </div>
                 <div className="space-y-2">
-                  <p className="font-medium text-gray-900">Vitrin fotoğrafını buraya sürükleyin</p>
-                  <p className="text-sm text-gray-500">veya bilgisayarınızdan seçin</p>
+                  <p className="font-medium text-gray-900">
+                    Vitrin fotoğrafını buraya sürükleyin
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    veya bilgisayarınızdan seçin
+                  </p>
                 </div>
                 <label className="mt-4">
                   <Button variant="outline" className="cursor-pointer">
@@ -228,15 +264,19 @@ export function MediaSection() {
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <Label className="text-lg font-semibold">Diğer Fotoğraflar</Label>
-              <p className="text-sm text-gray-500">Kampanyanızı detaylı anlatan görseller ekleyin</p>
+              <p className="text-sm text-gray-500">
+                Kampanyanızı detaylı anlatan görseller ekleyin
+              </p>
             </div>
           </div>
 
           <div
             className={cn(
               "border-2 border-dashed rounded-lg transition-colors",
-              dragOver === "other" ? "border-[#4DB05F] bg-[#4DB05F]/5" : "border-gray-200",
-              mediaFiles.some((file) => file.type === "other") ? "p-4" : "p-8",
+              dragOver === "other"
+                ? "border-[#4DB05F] bg-kfs/5"
+                : "border-gray-200",
+              mediaFiles.some((file) => file.type === "other") ? "p-4" : "p-8"
             )}
             onDragOver={(e) => handleDragOver(e, "other")}
             onDragLeave={handleDragLeave}
@@ -281,7 +321,7 @@ export function MediaSection() {
               <motion.label
                 className={cn(
                   "relative aspect-square rounded-lg border-2 border-dashed flex flex-col items-center justify-center cursor-pointer",
-                  "hover:border-[#4DB05F] hover:bg-[#4DB05F]/5 transition-colors",
+                  "hover:border-[#4DB05F] hover:bg-kfshover/5 transition-colors"
                 )}
               >
                 <Plus className="h-8 w-8 text-gray-400 mb-2" />
@@ -305,7 +345,9 @@ export function MediaSection() {
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <Label className="text-lg font-semibold">Videolar</Label>
-              <p className="text-sm text-gray-500">YouTube veya Vimeo video linklerini ekleyin</p>
+              <p className="text-sm text-gray-500">
+                YouTube veya Vimeo video linklerini ekleyin
+              </p>
             </div>
           </div>
 
@@ -318,7 +360,7 @@ export function MediaSection() {
             />
             <Button
               onClick={addVideoLink}
-              className="bg-[#4DB05F] hover:bg-[#4DB05F]/90 text-white"
+              className="bg-kfs hover:bg-kfshover/90 text-white"
               disabled={!newVideoLink.trim()}
             >
               Ekle
@@ -335,7 +377,10 @@ export function MediaSection() {
               >
                 <div className="aspect-video relative">
                   <Image
-                    src={getVideoThumbnail(link.url, link.platform) || "/placeholder.svg"}
+                    src={
+                      getVideoThumbnail(link.url, link.platform) ||
+                      "/placeholder.svg"
+                    }
                     alt="Video thumbnail"
                     fill
                     className="object-cover"
@@ -363,6 +408,5 @@ export function MediaSection() {
         </div>
       </Card>
     </div>
-  )
+  );
 }
-

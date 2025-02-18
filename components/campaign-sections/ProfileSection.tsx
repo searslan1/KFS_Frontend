@@ -1,13 +1,24 @@
-"use client"
+"use client";
 
-import { Card } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ImagePlus, HelpCircle, Plus } from "lucide-react"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { ImagePlus, HelpCircle, Plus } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export function ProfileSection() {
   return (
@@ -18,7 +29,9 @@ export function ProfileSection() {
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <Label className="text-base font-semibold">Kampanya Logosu</Label>
-              <p className="text-sm text-gray-500">Kampanyanızı temsil edecek bir logo yükleyin (PNG, JPG, SVG)</p>
+              <p className="text-sm text-gray-500">
+                Kampanyanızı temsil edecek bir logo yükleyin (PNG, JPG, SVG)
+              </p>
             </div>
             <TooltipProvider>
               <Tooltip>
@@ -36,9 +49,14 @@ export function ProfileSection() {
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
                 <ImagePlus className="w-12 h-12 text-gray-400 mb-3" />
                 <p className="mb-2 text-sm text-gray-500">
-                  <span className="font-semibold">Logo yüklemek için tıklayın</span> veya sürükleyip bırakın
+                  <span className="font-semibold">
+                    Logo yüklemek için tıklayın
+                  </span>{" "}
+                  veya sürükleyip bırakın
                 </p>
-                <p className="text-xs text-gray-500">PNG, JPG veya SVG (MAX. 2MB)</p>
+                <p className="text-xs text-gray-500">
+                  PNG, JPG veya SVG (MAX. 2MB)
+                </p>
               </div>
               <input type="file" className="hidden" accept="image/*" />
             </label>
@@ -51,17 +69,26 @@ export function ProfileSection() {
         <div className="space-y-6">
           <div className="space-y-1">
             <Label className="text-base font-semibold">Kampanya Adı</Label>
-            <Input placeholder="Kampanyanızın adını girin" className="max-w-xl" />
+            <Input
+              placeholder="Kampanyanızın adını girin"
+              className="max-w-xl"
+            />
           </div>
 
           <div className="space-y-1">
-            <Label className="text-base font-semibold">Kampanyanızı Bir Cümle İle Anlatın</Label>
+            <Label className="text-base font-semibold">
+              Kampanyanızı Bir Cümle İle Anlatın
+            </Label>
             <Input placeholder="Kısa ve etkileyici bir açıklama yazın" />
-            <p className="text-sm text-gray-500">Bu metin kampanya listeleme sayfasında görünecektir</p>
+            <p className="text-sm text-gray-500">
+              Bu metin kampanya listeleme sayfasında görünecektir
+            </p>
           </div>
 
           <div className="space-y-1">
-            <Label className="text-base font-semibold">Kapsam, Amaç ve Konusu</Label>
+            <Label className="text-base font-semibold">
+              Kapsam, Amaç ve Konusu
+            </Label>
             <Textarea
               placeholder="Projenizin kapsamını, amacını ve konusunu detaylı bir şekilde açıklayın"
               className="min-h-[200px]"
@@ -78,7 +105,9 @@ export function ProfileSection() {
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-1">
-              <Label className="text-base font-semibold">Girişim Ana Kategorisi</Label>
+              <Label className="text-base font-semibold">
+                Girişim Ana Kategorisi
+              </Label>
               <Select>
                 <SelectTrigger>
                   <SelectValue placeholder="Kategori seçin" />
@@ -93,7 +122,9 @@ export function ProfileSection() {
             </div>
 
             <div className="space-y-1">
-              <Label className="text-base font-semibold">Girişim İş Modelleri</Label>
+              <Label className="text-base font-semibold">
+                Girişim İş Modelleri
+              </Label>
               <Select>
                 <SelectTrigger>
                   <SelectValue placeholder="İş modeli seçin" />
@@ -123,7 +154,9 @@ export function ProfileSection() {
             </div>
 
             <div className="space-y-1">
-              <Label className="text-base font-semibold">Girişim Lokasyonu</Label>
+              <Label className="text-base font-semibold">
+                Girişim Lokasyonu
+              </Label>
               <Select>
                 <SelectTrigger>
                   <SelectValue placeholder="Şehir seçin" />
@@ -145,16 +178,22 @@ export function ProfileSection() {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="space-y-1">
-              <Label className="text-base font-semibold">Katılımcı Girişimciler</Label>
-              <p className="text-sm text-gray-500">Kampanyada yer alacak diğer girişimcileri ekleyin</p>
+              <Label className="text-base font-semibold">
+                Katılımcı Girişimciler
+              </Label>
+              <p className="text-sm text-gray-500">
+                Kampanyada yer alacak diğer girişimcileri ekleyin
+              </p>
             </div>
-            <Button className="bg-[#4DB05F] hover:bg-[#4DB05F]/90">
+            <Button className="bg-kfs hover:bg-kfshover/90">
               <Plus className="h-4 w-4 mr-2" />
               Girişimci Ekle
             </Button>
           </div>
           <div className="bg-gray-50 p-4 rounded-lg">
-            <p className="text-sm text-gray-500 text-center">Henüz girişimci eklenmemiş</p>
+            <p className="text-sm text-gray-500 text-center">
+              Henüz girişimci eklenmemiş
+            </p>
           </div>
         </div>
       </Card>
@@ -162,20 +201,28 @@ export function ProfileSection() {
       {/* Previous Campaigns Section */}
       <Card className="p-6">
         <div className="space-y-4">
-          <Label className="text-base font-semibold">Geçmiş Kampanyalar Hakkında Bilgiler</Label>
+          <Label className="text-base font-semibold">
+            Geçmiş Kampanyalar Hakkında Bilgiler
+          </Label>
           <div className="space-y-4">
             <div className="flex items-start space-x-3">
               <input type="radio" name="previous-campaigns" className="mt-1" />
               <div>
-                <Label>Daha önce paya dayalı kitle fonlaması kampanyası yapıldı mı?</Label>
-                <p className="text-sm text-gray-500">Eğer daha önce kampanya yaptıysanız, lütfen detayları belirtin</p>
+                <Label>
+                  Daha önce paya dayalı kitle fonlaması kampanyası yapıldı mı?
+                </Label>
+                <p className="text-sm text-gray-500">
+                  Eğer daha önce kampanya yaptıysanız, lütfen detayları belirtin
+                </p>
               </div>
             </div>
-            <Textarea placeholder="Varsa önceki kampanyalarınız hakkında bilgi verin" className="min-h-[100px]" />
+            <Textarea
+              placeholder="Varsa önceki kampanyalarınız hakkında bilgi verin"
+              className="min-h-[100px]"
+            />
           </div>
         </div>
       </Card>
     </div>
-  )
+  );
 }
-

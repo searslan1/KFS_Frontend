@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { Card } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Plus, Trash2 } from "lucide-react"
-import Image from "next/image"
+import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Plus, Trash2 } from "lucide-react";
+import Image from "next/image";
 
 export function TeamSection() {
   return (
@@ -16,7 +16,7 @@ export function TeamSection() {
         <div className="space-y-6">
           <div className="flex justify-between items-center">
             <Label className="text-base font-semibold">Takım Üyeleri</Label>
-            <Button className="bg-[#4DB05F] hover:bg-[#4DB05F]/90">
+            <Button className="bg-kfs hover:bg-kfshover/90">
               <Plus className="h-4 w-4 mr-2" />
               Yeni Üye Ekle
             </Button>
@@ -29,7 +29,12 @@ export function TeamSection() {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4">
                     <div className="relative w-20 h-20">
-                      <Image src="/placeholder.svg" alt="Team member" fill className="rounded-full object-cover" />
+                      <Image
+                        src="/placeholder.svg"
+                        alt="Team member"
+                        fill
+                        className="rounded-full object-cover"
+                      />
                     </div>
                     <Button variant="outline" size="sm">
                       Fotoğraf Değiştir
@@ -81,6 +86,5 @@ export function TeamSection() {
         </div>
       </Card>
     </div>
-  )
+  );
 }
-

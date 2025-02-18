@@ -1,19 +1,21 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import type { RootState, AppDispatch } from "@/lib/store"
-import { setPartners, setLoading, setError } from "@/lib/slices/partnersSlice"
-import type { Partner } from "@/lib/mockData"
-import Image from "next/image"
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState, AppDispatch } from "@/lib/store";
+import { setPartners, setLoading, setError } from "@/lib/slices/partnersSlice";
+import type { Partner } from "@/lib/mockData";
+import Image from "next/image";
 
 export function PartnersSection() {
-  const dispatch = useDispatch<AppDispatch>()
-  const { partners, loading, error } = useSelector((state: RootState) => state.partners)
+  const dispatch = useDispatch<AppDispatch>();
+  const { partners, loading, error } = useSelector(
+    (state: RootState) => state.partners
+  );
 
   useEffect(() => {
     const fetchPartners = async () => {
-      dispatch(setLoading(true))
+      dispatch(setLoading(true));
       try {
         // In a real application, you would fetch data from an API here
         // For now, we'll use mock data
@@ -40,20 +42,20 @@ export function PartnersSection() {
             name: "SmartCapital Yatırım",
             logoUrl: "/placeholder.svg",
           },
-        ]
-        dispatch(setPartners(mockPartners))
+        ];
+        dispatch(setPartners(mockPartners));
       } catch (error) {
-        dispatch(setError("Paydaşlar yüklenirken bir hata oluştu."))
+        dispatch(setError("Paydaşlar yüklenirken bir hata oluştu."));
       } finally {
-        dispatch(setLoading(false))
+        dispatch(setLoading(false));
       }
-    }
+    };
 
-    fetchPartners()
-  }, [dispatch])
+    fetchPartners();
+  }, [dispatch]);
 
-  if (loading) return <div>Yükleniyor...</div>
-  if (error) return <div>Hata: {error}</div>
+  if (loading) return <div>Yükleniyor...</div>;
+  if (error) return <div>Hata: {error}</div>;
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-[#f3f4f6]">
@@ -62,7 +64,7 @@ export function PartnersSection() {
           <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight bg-gradient-to-r from-[#4DB05F] to-[#3B6C8F] bg-clip-text text-transparent">
             PAYDAŞLARIMIZ
           </h2>
-          <div className="w-12 h-1 bg-[#4DB05F] rounded-full" />
+          <div className="w-12 h-1 bg-kfs rounded-full" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {partners.map((partner) => (
@@ -83,12 +85,11 @@ export function PartnersSection() {
                   {partner.name}
                 </h3>
               </div>
-              <div className="absolute inset-0 rounded-3xl bg-[#4DB05F]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 rounded-3xl bg-kfs/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
-

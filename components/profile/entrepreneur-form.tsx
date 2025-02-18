@@ -1,11 +1,17 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 
 export function EntrepreneurForm() {
   const [formData, setFormData] = useState({
@@ -28,14 +34,14 @@ export function EntrepreneurForm() {
     bankName: "",
     iban: "",
     website: "",
-  })
+  });
 
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
-    }))
-  }
+    }));
+  };
 
   return (
     <form className="space-y-6">
@@ -43,7 +49,11 @@ export function EntrepreneurForm() {
         {/* Personal Information */}
         <div className="space-y-2">
           <Label>Adınız *</Label>
-          <Input value={formData.name} onChange={(e) => handleChange("name", e.target.value)} className="rounded-lg" />
+          <Input
+            value={formData.name}
+            onChange={(e) => handleChange("name", e.target.value)}
+            className="rounded-lg"
+          />
         </div>
         <div className="space-y-2">
           <Label>Soyadınız *</Label>
@@ -72,7 +82,10 @@ export function EntrepreneurForm() {
         </div>
         <div className="space-y-2">
           <Label>Cinsiyet *</Label>
-          <Select value={formData.gender} onValueChange={(value) => handleChange("gender", value)}>
+          <Select
+            value={formData.gender}
+            onValueChange={(value) => handleChange("gender", value)}
+          >
             <SelectTrigger className="rounded-lg">
               <SelectValue placeholder="Seçiniz" />
             </SelectTrigger>
@@ -96,7 +109,10 @@ export function EntrepreneurForm() {
         {/* Location Information */}
         <div className="space-y-2">
           <Label>Şehir *</Label>
-          <Select value={formData.city} onValueChange={(value) => handleChange("city", value)}>
+          <Select
+            value={formData.city}
+            onValueChange={(value) => handleChange("city", value)}
+          >
             <SelectTrigger className="rounded-lg">
               <SelectValue placeholder="Seçiniz" />
             </SelectTrigger>
@@ -109,7 +125,10 @@ export function EntrepreneurForm() {
         </div>
         <div className="space-y-2">
           <Label>İlçe *</Label>
-          <Select value={formData.district} onValueChange={(value) => handleChange("district", value)}>
+          <Select
+            value={formData.district}
+            onValueChange={(value) => handleChange("district", value)}
+          >
             <SelectTrigger className="rounded-lg">
               <SelectValue placeholder="Seçiniz" />
             </SelectTrigger>
@@ -141,7 +160,10 @@ export function EntrepreneurForm() {
         {/* Professional Information */}
         <div className="space-y-2">
           <Label>Eğitim Durumu *</Label>
-          <Select value={formData.educationLevel} onValueChange={(value) => handleChange("educationLevel", value)}>
+          <Select
+            value={formData.educationLevel}
+            onValueChange={(value) => handleChange("educationLevel", value)}
+          >
             <SelectTrigger className="rounded-lg">
               <SelectValue placeholder="Seçiniz" />
             </SelectTrigger>
@@ -154,7 +176,10 @@ export function EntrepreneurForm() {
         </div>
         <div className="space-y-2">
           <Label>Meslek *</Label>
-          <Select value={formData.profession} onValueChange={(value) => handleChange("profession", value)}>
+          <Select
+            value={formData.profession}
+            onValueChange={(value) => handleChange("profession", value)}
+          >
             <SelectTrigger className="rounded-lg">
               <SelectValue placeholder="Seçiniz" />
             </SelectTrigger>
@@ -167,7 +192,10 @@ export function EntrepreneurForm() {
         </div>
         <div className="space-y-2">
           <Label>Faaliyet Gösterdiği Sektör *</Label>
-          <Select value={formData.sector} onValueChange={(value) => handleChange("sector", value)}>
+          <Select
+            value={formData.sector}
+            onValueChange={(value) => handleChange("sector", value)}
+          >
             <SelectTrigger className="rounded-lg">
               <SelectValue placeholder="Seçiniz" />
             </SelectTrigger>
@@ -202,7 +230,10 @@ export function EntrepreneurForm() {
         {/* Bank Information */}
         <div className="space-y-2">
           <Label>Banka Adı</Label>
-          <Select value={formData.bankName} onValueChange={(value) => handleChange("bankName", value)}>
+          <Select
+            value={formData.bankName}
+            onValueChange={(value) => handleChange("bankName", value)}
+          >
             <SelectTrigger className="rounded-lg">
               <SelectValue placeholder="Seçiniz" />
             </SelectTrigger>
@@ -215,7 +246,11 @@ export function EntrepreneurForm() {
         </div>
         <div className="space-y-2">
           <Label>IBAN</Label>
-          <Input value={formData.iban} onChange={(e) => handleChange("iban", e.target.value)} className="rounded-lg" />
+          <Input
+            value={formData.iban}
+            onChange={(e) => handleChange("iban", e.target.value)}
+            className="rounded-lg"
+          />
         </div>
         <div className="space-y-2">
           <Label>Web Sitesi</Label>
@@ -229,11 +264,13 @@ export function EntrepreneurForm() {
       </div>
 
       <div className="flex justify-end">
-        <Button type="submit" className="bg-[#4DB05F] hover:bg-[#4DB05F]/90 text-white px-8 rounded-full">
+        <Button
+          type="submit"
+          className="bg-kfs hover:bg-kfshover/90 text-white px-8 rounded-full"
+        >
           Kaydet
         </Button>
       </div>
     </form>
-  )
+  );
 }
-

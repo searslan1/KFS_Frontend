@@ -1,50 +1,63 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { motion } from "framer-motion"
-import { FileText, Plus, Info, HelpCircle, Trash2, Eye, Download } from "lucide-react"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { motion } from "framer-motion";
+import {
+  FileText,
+  Plus,
+  Info,
+  HelpCircle,
+  Trash2,
+  Eye,
+  Download,
+} from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 interface DocumentFile {
-  id: string
-  file: File
-  type: string
-  uploadDate: Date
+  id: string;
+  file: File;
+  type: string;
+  uploadDate: Date;
 }
 
 export function OtherDocumentsSection() {
-  const [documents, setDocuments] = useState<DocumentFile[]>([])
-  const [dragOver, setDragOver] = useState(false)
+  const [documents, setDocuments] = useState<DocumentFile[]>([]);
+  const [dragOver, setDragOver] = useState(false);
 
   const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault()
-    setDragOver(true)
-  }
+    e.preventDefault();
+    setDragOver(true);
+  };
 
   const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault()
-    setDragOver(false)
-  }
+    e.preventDefault();
+    setDragOver(false);
+  };
 
   const handleDrop = async (e: React.DragEvent) => {
-    e.preventDefault()
-    setDragOver(false)
+    e.preventDefault();
+    setDragOver(false);
 
-    const files = Array.from(e.dataTransfer.files)
-    handleFiles(files)
-  }
+    const files = Array.from(e.dataTransfer.files);
+    handleFiles(files);
+  };
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files?.length) return
+    if (!e.target.files?.length) return;
 
-    const files = Array.from(e.target.files)
-    handleFiles(files)
-  }
+    const files = Array.from(e.target.files);
+    handleFiles(files);
+  };
 
   const handleFiles = (files: File[]) => {
     const newFiles = files.map((file) => ({
@@ -52,37 +65,40 @@ export function OtherDocumentsSection() {
       file,
       type: file.type,
       uploadDate: new Date(),
-    }))
+    }));
 
-    setDocuments((prev) => [...prev, ...newFiles])
-  }
+    setDocuments((prev) => [...prev, ...newFiles]);
+  };
 
   const removeFile = (id: string) => {
-    setDocuments((prev) => prev.filter((doc) => doc.id !== id))
-  }
+    setDocuments((prev) => prev.filter((doc) => doc.id !== id));
+  };
 
   const formatFileSize = (bytes: number) => {
-    if (bytes === 0) return "0 Bytes"
-    const k = 1024
-    const sizes = ["Bytes", "KB", "MB", "GB"]
-    const i = Math.floor(Math.log(bytes) / Math.log(k))
-    return Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
-  }
+    if (bytes === 0) return "0 Bytes";
+    const k = 1024;
+    const sizes = ["Bytes", "KB", "MB", "GB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return (
+      Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
+    );
+  };
 
   const getFileIcon = (type: string) => {
-    if (type.includes("pdf")) return "📄"
-    if (type.includes("word")) return "📝"
-    if (type.includes("excel") || type.includes("spreadsheet")) return "📊"
-    if (type.includes("presentation")) return "📑"
-    return "📎"
-  }
+    if (type.includes("pdf")) return "📄";
+    if (type.includes("word")) return "📝";
+    if (type.includes("excel") || type.includes("spreadsheet")) return "📊";
+    if (type.includes("presentation")) return "📑";
+    return "📎";
+  };
 
   return (
     <div className="space-y-8">
       <Alert className="bg-blue-50 border-blue-200">
         <Info className="h-4 w-4 text-blue-600" />
         <AlertDescription className="text-blue-700">
-          Bu alana kampanyanızla ilgili ek dokümanları yükleyebilirsiniz. Dosya yükleme zorunluluğu bulunmamaktadır.
+          Bu alana kampanyanızla ilgili ek dokümanları yükleyebilirsiniz. Dosya
+          yükleme zorunluluğu bulunmamaktadır.
         </AlertDescription>
       </Alert>
 
@@ -91,7 +107,9 @@ export function OtherDocumentsSection() {
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <Label className="text-lg font-semibold">Diğer Dokümanlar</Label>
-              <p className="text-sm text-gray-500">Kampanyanızla ilgili ek dokümanları buraya yükleyebilirsiniz</p>
+              <p className="text-sm text-gray-500">
+                Kampanyanızla ilgili ek dokümanları buraya yükleyebilirsiniz
+              </p>
             </div>
             <TooltipProvider>
               <Tooltip>
@@ -99,7 +117,9 @@ export function OtherDocumentsSection() {
                   <HelpCircle className="h-5 w-5 text-gray-400" />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Desteklenen formatlar: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX</p>
+                  <p>
+                    Desteklenen formatlar: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX
+                  </p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -108,8 +128,8 @@ export function OtherDocumentsSection() {
           <div
             className={cn(
               "border-2 border-dashed rounded-lg transition-colors",
-              dragOver ? "border-[#4DB05F] bg-[#4DB05F]/5" : "border-gray-200",
-              documents.length > 0 ? "p-4" : "p-8",
+              dragOver ? "border-[#4DB05F] bg-kfs/5" : "border-gray-200",
+              documents.length > 0 ? "p-4" : "p-8"
             )}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -140,9 +160,9 @@ export function OtherDocumentsSection() {
                         size="icon"
                         className="h-8 w-8 text-gray-500 hover:text-gray-700"
                         onClick={() => {
-                          const url = URL.createObjectURL(doc.file)
-                          window.open(url)
-                          URL.revokeObjectURL(url)
+                          const url = URL.createObjectURL(doc.file);
+                          window.open(url);
+                          URL.revokeObjectURL(url);
                         }}
                       >
                         <Eye className="h-4 w-4" />
@@ -152,14 +172,14 @@ export function OtherDocumentsSection() {
                         size="icon"
                         className="h-8 w-8 text-gray-500 hover:text-gray-700"
                         onClick={() => {
-                          const url = URL.createObjectURL(doc.file)
-                          const a = document.createElement("a")
-                          a.href = url
-                          a.download = doc.file.name
-                          document.body.appendChild(a)
-                          a.click()
-                          document.body.removeChild(a)
-                          URL.revokeObjectURL(url)
+                          const url = URL.createObjectURL(doc.file);
+                          const a = document.createElement("a");
+                          a.href = url;
+                          a.download = doc.file.name;
+                          document.body.appendChild(a);
+                          a.click();
+                          document.body.removeChild(a);
+                          URL.revokeObjectURL(url);
                         }}
                       >
                         <Download className="h-4 w-4" />
@@ -197,8 +217,12 @@ export function OtherDocumentsSection() {
                   <FileText className="h-6 w-6 text-gray-600" />
                 </div>
                 <div className="space-y-2">
-                  <p className="font-medium text-gray-900">Dokümanları buraya sürükleyin</p>
-                  <p className="text-sm text-gray-500">veya bilgisayarınızdan seçin</p>
+                  <p className="font-medium text-gray-900">
+                    Dokümanları buraya sürükleyin
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    veya bilgisayarınızdan seçin
+                  </p>
                 </div>
                 <label className="mt-4">
                   <Button variant="outline" className="cursor-pointer">
@@ -218,6 +242,5 @@ export function OtherDocumentsSection() {
         </div>
       </Card>
     </div>
-  )
+  );
 }
-

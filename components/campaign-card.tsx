@@ -6,13 +6,12 @@ import { Button } from "@/components/ui/button";
 import type { Campaign } from "@/lib/mockData";
 import { calculateProgress } from "@/shared/utils/formatters";
 import { useLanguage } from "@/contexts/language-context";
-import { CampaignDetails } from "./campaign-details";
 import { Heart } from "lucide-react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FundingStatus } from "./Funding-Status";
 import Link from "next/link";
 
-// Add this new CSS keyframe animation
 const shimmerAnimation = `
   @keyframes shimmer {
     0% { background-position: 200% 0; }
@@ -26,7 +25,6 @@ interface CampaignCardProps {
 
 export function CampaignCard({ campaign }: CampaignCardProps) {
   const { t } = useLanguage();
-  const [showDetails, setShowDetails] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const progress = calculateProgress(
     campaign.currentAmount,
@@ -91,43 +89,21 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
           </div>
 
           {/* Fonlama Durumu */}
-          <div className="bg-[#EDEDED] rounded-xl p-4 mb-4">
-            <div className="flex justify-between mb-2">
-              <span className="text-sm text-gray-500">{t("target")}</span>
-              <span className="text-sm font-bold">
-                ₺ {campaign.funding.need_amount_fund.toLocaleString()}
-              </span>
-            </div>
-            <div className="w-full bg-[#E5E5E5] rounded-full h-6 mb-2 relative overflow-hidden">
-              <div
-                className="bg-gradient-to-r from-[#4DB05F] via-[#3B6C8F] to-[#4DB05F] h-full rounded-full flex items-center justify-end pr-2 relative"
-                style={{
-                  width: `${Math.max(progress, 20)}%`,
-                  backgroundSize: "200% 100%",
-                  animation: "shimmer 3s linear infinite",
-                }}
-              >
-                <span className="text-white text-xs font-bold truncate relative z-1">
-                  ₺ {campaign.currentAmount.toLocaleString()}
-                </span>
-              </div>
-            </div>
-          </div>
+          <FundingStatus
+            targetLabel={t("target")}
+            targetAmount={campaign.funding.need_amount_fund}
+            currentAmount={campaign.currentAmount}
+            progress={progress}
+          />
 
           {/* Detay Butonu */}
-          <Link href={`/campaigns/${campaign.id}`}>
-            <Button className="w-full h-[56px] bg-kfs hover:bg-kfs text-white text-lg font-medium rounded-xl">
+          <Link href={`/campaigns/${campaign.id}`} passHref legacyBehavior>
+            <Button className="w-full h-[56px]" >
               {t("viewDetails")}
             </Button>
           </Link>
         </div>
       </div>
-
-      <CampaignDetails
-        campaign={campaign}
-        open={showDetails}
-        onOpenChange={setShowDetails}
-      />
     </>
   );
 }
